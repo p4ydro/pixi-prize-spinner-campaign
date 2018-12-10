@@ -1,59 +1,67 @@
 define([
-    'pixi',
+    // 'pixi',
     'Constants',
     'Settings/GameSettings',
     'Debug/Logger',
     'Managers/StateManager',
-    // 'tink'
-], function (PIXI, Constants, GameSettings, Logger, StateManager) {
+], function (Constants, GameSettings, Logger, StateManager) {
+    "use strict"
+
+    function Game() {
+    };
+
+    Game.prototype = {
+        initGame: function() {
+            Logger.log("Game", "Game intialized");
+
+            // Create PixiJS Application
+            this.Game = createStandardGame();
+            this.renderer = this.Game.renderer;
+
+            Logger.log("Game", "Load complete");
+
+            // Create GameScene
+            this.GameScene = new PIXI.Container();
+
+            // Add new application to webpage
+            document.body.appendChild(this.Game.view);
+
+            // Initialize resize listener
+            window.addEventListener("resize", this.resizeGame.bind(this));
+
+            // Enter initial state
+            StateManager.enterState(StateManager.StateType.Game);
+
+            // Add GameScene
+            this.Game.stage.addChild(this.GameScene);
+
+            // Perform initial resize
+            this.resizeGame();
+
+            // Perform initial update
+            // this.update();
+        },
+
+        resizeGame: function() {
+            let height = window.innerHeight;
+            let width = height / Constants.MAXIMUM_GAME_RATIO;
     
-    var GenericGame = function() {
-        this.initGame();
-    };
-
-    GenericGame.prototype.initGame = function() {
-        Logger.log("Game.js", "Game intialized");
-
-        // Create PixiJS Application
-        this.Game = createStandardGame();
-
-        // Add new application to webpage
-        document.body.appendChild(this.Game.view);
-
-        // Initialize resize listener
-        window.addEventListener("resize", this.resizeGame.bind(this));
-
-        // Enter initial state
-        StateManager.enterState(StateManager.StateType.Game);
-
-        // Perform initial resize
-        this.resizeGame();
-
-        // Perform initial update
-        this.update();
-    };
-
-    GenericGame.prototype.resizeGame = function() {
-        Logger.log("Game.js", "Window resized");
+            this.Game.renderer.resize(width, height);
+    
+            StateManager.resize();
+        },
         
-        let height = window.innerHeight;
-        let width = height / Constants.MAXIMUM_GAME_RATIO;
-
-        this.Game.renderer.resize(width, height);
-
-        StateManager.resize();
-    };
-
-    GenericGame.prototype.update = function() {
-        // Update all components
-        StateManager.update();
-
-        // Update Game components
-        this.Game.Tink.update();
-
-        // Next update
-        requestAnimationFrame(this.update());
-    };
+        update: function() {
+            // Update all components
+            StateManager.update();
+    
+            // Update Game components
+            this.Game.Tink.update();
+    
+            // Next update
+            requestAnimationFrame(this.update());
+        }
+    }
 
     function createStandardGame() {
         var a = new PIXI.Application({
@@ -68,6 +76,6 @@ define([
         return a;
     };
 
-    return GenericGame;
+    return Game;
 
 });

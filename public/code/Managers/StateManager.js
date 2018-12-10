@@ -24,7 +24,9 @@ define([
 
     StateManager.enterState = function(stateType) {
 
-        this.Current.onExit();
+        if (this.Current != null) {
+            this.Current.onExit();
+        }
 
         switch (stateType) {
             case this.StateType.InviteFriends:
@@ -35,7 +37,7 @@ define([
             break;
             case this.StateType.Game:
                 Logger.log("StateManager.js", "Entered GameState");
-                this.Current = new GameState();
+                this.Current = GameState;
             break;
             case this.StateType.Prize:
             break;
@@ -51,6 +53,13 @@ define([
             this.Current.update();
         }
     };
+
+    StateManager.resize = function() {
+        // Resize current state
+        if (this.Current !== undefined) {
+            this.Current.resize();
+        }
+    }
 
     return StateManager;
 

@@ -1,25 +1,30 @@
-define(['Debug/Logger'], 
-function(Logger) {
+define([
+    'Debug/Logger',
+    'UI/Background',
+    'Managers/GameManager'
+], 
+function(Logger, Background, GameManager) {
 
-    var GameState = function() {
-    };
+    var GameState = {
+        onEnter: function() {
+            // Create all components
+            this.background = new Background();
+    
+            // Add all components to stage
+            GameManager.GAME.GameScene.addChild(this.background.Sprite);
+        },
 
-    GameState.prototype.onEnter = function() {
-        Logger.log("GameState", "OnEnter called");
+        update: function() {
 
-        this.background = new this.background()
-    };
+        },
 
-    GameState.prototype.update = function() {
+        resize: function() {
+            this.background.resize();
+        },
 
-    };
+        onExit: function() {
 
-    GameState.prototype.resize = function() {
-
-    };
-
-    GameState.prototype.onExit = function() {
-
+        }
     };
 
     return GameState;

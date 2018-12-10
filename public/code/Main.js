@@ -1,17 +1,25 @@
 require([
+    'Managers/GameManager',
     'Game',
     'Config',
-    'Debug/Logger'
-], function(Game, Config, Logger) {
-    Logger.log("Main.js", "Main intialized");
-
+    'Debug/Logger',
+    'Images'
+], function(GameManager, Game, Config, Logger, Images) {
     // Initialize config
     Config.initialize();
 
     // Start game
     function StartGame() {
-        var game = new Game();
-        Logger.log("Main.js", "Game started");
+        // FIXME Temporary Preload
+        PIXI.loader
+            .add(Object.values(Images))
+            .on("progress", function(e) {
+                Logger.log("Main", "Loading: " + e.progress);
+            })
+            .load(function() {
+                GameManager.GAME = new Game();
+                GameManager.GAME.initGame();
+            });
     };
     
     // Start game

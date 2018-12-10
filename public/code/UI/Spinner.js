@@ -11,6 +11,10 @@ define([
 
     Spinner.prototype = {
         init: function() {
+            this.spun = false;
+            this.rotationSpeed = 0;
+            this.maximumRotationSpeed = 0.5;
+            this.stopTime = 2;
             this.InnerSprite = new PIXI.Sprite(PIXI.loader.resources[Images.SpinnerInner].texture);
             this.BackSprite = new PIXI.Sprite(PIXI.loader.resources[Images.SpinnerBack].texture);
             this.TickSprite = new PIXI.Sprite(PIXI.loader.resources[Images.SpinnerTick].texture);
@@ -19,20 +23,30 @@ define([
                 this.InnerSprite, this.BackSprite, this.TickSprite
             ];
             
-            this.rotationSpeed = 0;
         },
 
         update: function() {
-            if (this.rotationSpeed < 0.001) {
-                this.rotationSpeed = 0;
-            } else {
-                this.rotationSpeed += (0 - this.rotationSpeed) / 50;
+
+            // Spinning functionality
+            if (this.spun) {
+                // Easing into full speed
+                if (this.stopTime > 0) {
+                    this.rotationSpeed += (this.maximumRotationSpeed - this.rotationSpeed) / 20;
+                    this.stopTime -= 0.05;
+                } else if (this.rotationSpeed < 0.001) {
+                    this.rotationSpeed = 0;
+                } else {
+                    this.rotationSpeed += (0 - this.rotationSpeed) / 50;
+                }
+
+                // Applying rotation
+                this.InnerSprite.rotation += this.rotationSpeed;
             }
-            this.InnerSprite.rotation += this.rotationSpeed;
         },
 
         spin: function() {
-            this.rotationSpeed = 0.5;
+            this.spun = true;
+            this.rotationSpeed = -0.2;
         },
 
         resize: function() {

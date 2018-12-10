@@ -15,6 +15,7 @@ define([
         clicked: false,
         spinner: undefined,
         spun: false,
+        spinTime: 0.5,
 
         init: function(spinner) {
             this.spinner = spinner;
@@ -46,8 +47,9 @@ define([
                 }
             }
 
-            // Fading out button
+            // Spinning functionality
             if (this.spun) {
+                // Button fading out
                 if (this.Sprite.alpha <= 0.001) {
                     this.Sprite.alpha = 0;
                 } else {

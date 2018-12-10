@@ -11,9 +11,15 @@ define([
 
     Spinner.prototype = {
         init: function() {
-            this.Sprite = new PIXI.Sprite(PIXI.loader.resources[Images.Spinner].texture);
-            this.Sprite.anchor.set(0.5, 0.5);
-            this.rotationSpeed = 0.5;
+            this.InnerSprite = new PIXI.Sprite(PIXI.loader.resources[Images.SpinnerInner].texture);
+            this.BackSprite = new PIXI.Sprite(PIXI.loader.resources[Images.SpinnerBack].texture);
+            this.TickSprite = new PIXI.Sprite(PIXI.loader.resources[Images.SpinnerTick].texture);
+
+            this.Sprites = [
+                this.InnerSprite, this.BackSprite, this.TickSprite
+            ];
+            
+            this.rotationSpeed = 0;
         },
 
         update: function() {
@@ -22,14 +28,28 @@ define([
             } else {
                 this.rotationSpeed += (0 - this.rotationSpeed) / 50;
             }
-            this.Sprite.rotation += this.rotationSpeed;
+            this.InnerSprite.rotation += this.rotationSpeed;
+        },
+
+        spin: function() {
+            this.rotationSpeed = 0.5;
         },
 
         resize: function() {
-            Utils.resizeSpriteByWidth(this.Sprite, (GameManager.GAME.Renderer.width * 0.75));
+            Utils.resizeSpriteByWidth(this.BackSprite, (GameManager.GAME.Renderer.width * 0.75));
+            Utils.resizeSpriteByWidth(this.InnerSprite, (GameManager.GAME.Renderer.width * 0.58));
+            Utils.resizeSpriteByWidth(this.TickSprite, (GameManager.GAME.Renderer.width * 0.12));
             // Set initial position
-            this.Sprite.x = (GameManager.GAME.Renderer.getHalfWidth());
-            this.Sprite.y = (GameManager.GAME.Renderer.height * 0.4);
+            let x = GameManager.GAME.Renderer.getHalfWidth(), y = (GameManager.GAME.Renderer.height * 0.4);
+
+            for (var s in this.Sprites) {
+                console.log(s);
+                let sp = this.Sprites[s];
+                sp.anchor.set(0.5, 0.5);
+                sp.x = x;
+                sp.y = y;
+            }
+
         }
     }
 

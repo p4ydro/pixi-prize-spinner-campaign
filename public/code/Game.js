@@ -16,7 +16,13 @@ define([
 
             // Create PixiJS Application
             this.Game = createStandardGame();
-            this.renderer = this.Game.renderer;
+            this.Renderer = this.Game.renderer;
+            this.Renderer.getHalfWidth = function() {
+                return (this.width / 2);
+            };
+            this.Renderer.getHalfHeight = function() {
+                return (this.height / 2);
+            };
 
             Logger.log("Game", "Load complete");
 

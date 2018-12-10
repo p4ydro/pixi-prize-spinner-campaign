@@ -6,15 +6,13 @@ define([
 ], function(Logger, Images, GameManager, Utils) {
     
     var Background = function() {
-        this.initBackground();
-    };
-
-    Background.prototype.initBackground = function() {
+        this.init();
     };
 
     Background.prototype = {
-        initBackground: function() {
-            this.Sprite = new PIXI.Sprite(PIXI.loader.resources["images/Game/Background.png"].texture);
+        init: function() {
+            // Get sprite
+            this.Sprite = new PIXI.Sprite(PIXI.loader.resources[Images.Background].texture);
         },
         
         update: function() {
@@ -22,7 +20,7 @@ define([
         },
 
         resize: function() {
-            Utils.resizeSpriteByWidth(this.Sprite, GameManager.GAME.renderer.width);
+            Utils.resizeSpriteByWidth(this.Sprite, GameManager.GAME.Renderer.width);
         }
     }
 

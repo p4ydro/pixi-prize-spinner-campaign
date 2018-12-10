@@ -4,13 +4,14 @@ define([
     'Settings/GameSettings',
     'Debug/Logger',
     'Managers/StateManager',
-], function (Constants, GameSettings, Logger, StateManager) {
+    'Managers/GameManager'
+], function (Constants, GameSettings, Logger, StateManager, GameManager) {
     "use strict"
 
-    function Game() {
+    function GenericGame() {
     };
 
-    Game.prototype = {
+    GenericGame.prototype = {
         initGame: function() {
             Logger.log("Game", "Game intialized");
 
@@ -46,6 +47,7 @@ define([
 
             // Perform initial update
             // this.update();
+            requestAnimationFrame(this.update);
         },
 
         resizeGame: function() {
@@ -62,10 +64,10 @@ define([
             StateManager.update();
     
             // Update Game components
-            this.Game.Tink.update();
-    
+            GameManager.GAME.Game.Tink.update();
+
             // Next update
-            requestAnimationFrame(this.update());
+            requestAnimationFrame(GameManager.GAME.update);
         }
     }
 
@@ -82,6 +84,6 @@ define([
         return a;
     };
 
-    return Game;
+    return GenericGame;
 
 });

@@ -18,7 +18,8 @@ function(Logger, Background, GameManager, Spinner) {
         },
 
         update: function() {
-
+            this.background.update();
+            this.spinner.update();
         },
 
         resize: function() {

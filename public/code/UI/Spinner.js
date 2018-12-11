@@ -14,7 +14,9 @@ define([
             this.spun = false;
             this.rotationSpeed = 0;
             this.maximumRotationSpeed = 0.5;
+            this.finalTargetDegrees = 0;
             this.stopTime = 2;
+            this.stopped = false;
             this.InnerSprite = new PIXI.Sprite(PIXI.loader.resources[Images.SpinnerInner].texture);
             this.BackSprite = new PIXI.Sprite(PIXI.loader.resources[Images.SpinnerBack].texture);
             this.TickSprite = new PIXI.Sprite(PIXI.loader.resources[Images.SpinnerTick].texture);
@@ -22,11 +24,10 @@ define([
             this.Sprites = [
                 this.InnerSprite, this.BackSprite, this.TickSprite
             ];
-            
         },
 
         update: function() {
-
+            // console.log(this.InnerSprite.rotation);
             // Spinning functionality
             if (this.spun) {
                 // Easing into full speed
@@ -35,18 +36,50 @@ define([
                     this.stopTime -= 0.05;
                 } else if (this.rotationSpeed < 0.001) {
                     this.rotationSpeed = 0;
+                    if (!this.stopped) {
+                        this.stop();
+                    }
                 } else {
                     this.rotationSpeed += (0 - this.rotationSpeed) / 50;
                 }
 
                 // Applying rotation
                 this.InnerSprite.rotation += this.rotationSpeed;
+
+                // Stopped easing into target rotation
+                if (this.stopped) {
+                    // Get current degrees
+                    let currentRotation = radiansToDegrees(this.InnerSprite.rotation);
+
+                    // Ease
+                    let newRotation = (this.finalTargetDegrees - currentRotation) / 5;
+
+                    // Apply new rotation
+                    this.InnerSprite.rotation += degreesToRadians(newRotation);
+                }
             }
         },
 
         spin: function() {
             this.spun = true;
             this.rotationSpeed = -0.2;
+        },
+
+        stop: function() {
+            this.stopped = true;
+
+            let currentDegrees = radiansToDegrees(this.InnerSprite.rotation);
+            Logger.log("Spinner", "CurrentRotation: " + currentDegrees);
+            console.log("");
+            let finalDegrees = currentDegrees - (currentDegrees % 45);
+            Logger.log("Spinner", "FinalDegrees: " + finalDegrees);
+            //
+            console.log('----------');
+            console.log('NowRad: ' + this.InnerSprite.rotation);
+            console.log('NowDeg: ' + currentDegrees);
+            console.log('NowDegCon: ' + degreesToRadians(currentDegrees));
+
+            this.finalTargetDegrees = finalDegrees;
         },
 
         resize: function() {
@@ -66,6 +99,15 @@ define([
 
         }
     }
+
+    // Converts from radians to degrees.
+    radiansToDegrees = function(radians) {
+        return radians * 180 / Math.PI;
+    };
+    // Converts from degrees to radians.
+    degreesToRadians = function(degrees) {
+        return degrees * Math.PI / 180;
+    };
 
     return Spinner;
 

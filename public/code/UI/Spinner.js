@@ -68,18 +68,10 @@ define([
         stop: function() {
             this.stopped = true;
 
+            // Find target degrees
             let currentDegrees = radiansToDegrees(this.InnerSprite.rotation);
-            Logger.log("Spinner", "CurrentRotation: " + currentDegrees);
-            console.log("");
-            let finalDegrees = currentDegrees - (currentDegrees % 45);
-            Logger.log("Spinner", "FinalDegrees: " + finalDegrees);
-            //
-            console.log('----------');
-            console.log('NowRad: ' + this.InnerSprite.rotation);
-            console.log('NowDeg: ' + currentDegrees);
-            console.log('NowDegCon: ' + degreesToRadians(currentDegrees));
-
-            this.finalTargetDegrees = finalDegrees;
+            this.finalTargetDegrees = currentDegrees - (currentDegrees % 45);
+            console.log(this.finalTargetDegrees - currentDegrees);
         },
 
         resize: function() {

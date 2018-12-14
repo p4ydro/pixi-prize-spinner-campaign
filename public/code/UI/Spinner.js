@@ -71,7 +71,6 @@ define([
             // Find target degrees
             let currentDegrees = radiansToDegrees(this.InnerSprite.rotation);
             this.finalTargetDegrees = currentDegrees - (currentDegrees % 45);
-            console.log(this.finalTargetDegrees - currentDegrees);
         },
 
         resize: function() {
@@ -82,7 +81,6 @@ define([
             let x = GameManager.GAME.Renderer.getHalfWidth(), y = (GameManager.GAME.Renderer.height * 0.4);
 
             for (var s in this.Sprites) {
-                console.log(s);
                 let sp = this.Sprites[s];
                 sp.anchor.set(0.5, 0.5);
                 sp.x = x;

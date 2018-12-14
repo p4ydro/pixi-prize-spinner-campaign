@@ -1,0 +1,35 @@
+@font-face {
+    font-family: Accord;
+    src: url("../fonts/AccordReg.otf") format("opentype");
+}
+
+@font-face {
+    font-family: AccordMedium;
+    src: url("../fonts/AccordMedium.otf") format("opentype");
+}
+
+@font-face {
+    font-family: AccordThin;
+    src: url("../fonts/AccordThin.otf") format("opentype");
+}
+
+@font-face {
+    font-family: AccordLight;
+    src: url("../fonts/AccordLight.otf") format("opentype");
+}
+
+@font-face {
+    font-family: AccordExtraLight;
+    src: url("../fonts/AccordExtraLight.otf") format("opentype");
+}
+
+@font-face {
+    font-family: AccordBold;
+    src: url("../fonts/AccordBold.otf") format("opentype");
+}
+
+
+@font-face {
+    font-family: AccordExtraBold;
+    src: url("../fonts/AccordExtraBold.otf") format("opentype");
+}

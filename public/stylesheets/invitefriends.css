@@ -1,0 +1,96 @@
+* {
+    /* border: 1px solid red; */
+}
+
+body {
+    background-color: #46a8fa;
+    font-family: 'Accord', sans-serif;
+    color: white;
+    text-align: center;
+}
+
+#main {
+    background-color: #46d5fa;
+    position: relative;
+    height: 100vh;
+    width: calc(100vh / 1.66);
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0px 0px 200px rgba(0, 0, 0, 0.25);
+}
+
+.bottom-half {
+    height: 50%;
+    width: 100%;;
+    position: absolute;
+    bottom: 0px;
+    top: 45%;
+}
+
+.icon-container {
+    position: absolute;
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.icon-container .main-icon {
+    width: 100%;
+    height: auto;
+}
+.icon-container .star-icon, .icon-container .chat-icon {
+    width: 35%;
+    height: auto;
+    position: absolute;
+}
+.icon-container .star-icon {
+    top: 20%;
+    right: 0px;
+}
+.icon-container .chat-icon {
+    bottom: 20%;
+    left: 0px;
+}
+
+.text-container {
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+.text-container h1 {
+    width: 100%;
+    font-size: 30px;
+    font-family: 'AccordExtraBold', sans-serif;
+}
+.text-container h2 {
+    font-family: 'Accord', sans-serif;
+    position: relative;
+    width: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 15px;
+}
+
+.button-container {
+    position: relative;
+    padding: 10px;
+}
+.button-container .share-button {
+    font-family: 'AccordMedium', sans-serif;
+    width: 70%;
+    padding: 10px 0px;
+    margin: 10px 0px;
+    border: none;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: #1877b7;
+    color: white;
+}
+
+.how-it-works-container {
+    position: absolute;
+    width: 100%;
+    bottom: 30px;
+}
+.how-it-works-container a {
+    font-size: 25px;
+}

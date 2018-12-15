@@ -96,9 +96,10 @@ define([
             let currentFloorDegrees = this.finalTargetDegrees % 360;
             let index = (currentFloorDegrees / 60);
             let prize = (this.spinResults[index]);
-            
+            let prizeVal = PrizeManager.PrizeTypes[prize];
+
             // Collect prize with PrizeManager
-            PrizeManager.collectPrize(prize);
+            PrizeManager.collectPrize(prizeVal);
         },
 
         resize: function() {

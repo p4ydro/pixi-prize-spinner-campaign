@@ -1,5 +1,8 @@
 body {
     text-align: center;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 canvas {
@@ -19,7 +22,7 @@ canvas {
     top: 0px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 999;
+    z-index: 5;
 }
 .game-overlay .button-section {
     position: absolute;
@@ -37,4 +40,89 @@ canvas {
 }
 .game-overlay .spin-button:hover.removed {
     cursor: default;
+}
+
+.darkener {
+    visibility: hidden;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    transition: 0.3s;
+}
+.darkener.shown {
+    visibility: visible;
+    opacity: 0.8;
+}
+
+.prompt-container {
+    position: absolute;
+    z-index: 999;
+    width: 100vw;
+    max-width: calc(100vh / 2);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding-bottom: 40px;
+    border-radius: 15px;
+    overflow: hidden;
+    /* opacity: 0; */
+    margin-top: -100%;
+    transition: 0.5s;
+    transition-timing-function: cubic-bezier(.4, -0.5, 0, 1.2);
+}
+.prompt-container.active {
+    margin-top: 0px;
+}
+.prompt-container .prompt-transparency-wrapper {
+    opacity: 0;
+    transition: 2s;
+}
+.prompt-container.active .prompt-transparency-wrapper {
+    opacity: 1;
+}
+.prompt-container .prize-section {
+    font-family: "AccordBold", sans-serif;
+    background-color: #f28f32;
+    padding: 80px 0px;
+}
+.prompt-container .prize-section h1 {
+    font-size: 60px;
+}
+.prompt-container .description-section {
+    color: #1fb7e9;
+    text-align: center;
+}
+.prompt-container .description-section h1 {
+    padding: 20px 70px;
+    padding-top: 40px;
+}
+.prompt-container .description-section h2 {
+    padding-bottom: 30px;
+}
+.prompt-container .code-container {
+    position: relative;
+    background-color: #b6ecff;
+    border-radius: 5px;
+    width: 70%;
+    left: 50%;
+    padding: 5px 0px;
+    transform: translateX(-50%);
+}
+.prompt-container .code-container h1 {
+    padding: 0px 0px;
+}
+.prompt-container .download-button {
+    padding: 10px 20px;
+    width: 80%;
+    margin: 20px 0px;
+}
+.prompt-container .links-container a {
+    font-size: 25px;
+    margin: 20px 0px;
 }

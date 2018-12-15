@@ -34,6 +34,7 @@
     position: relative;
     width: 100%;
     text-align: center;
+    margin: 20px 0px;
 }
 .text-container h1 {
     width: 100%;
@@ -58,6 +59,119 @@
     width: 100%;
     bottom: 30px;
 }
-.how-it-works-container a {
+.how-it-works-container .how-it-works-link {
     font-size: 25px;
+}
+.how-it-works-container .how-it-works-link:hover {
+    cursor: pointer;
+}
+.how-it-works-link i {
+    padding-top: 4px;
+}
+.how-it-works-link span {
+    transition: 0.2s;
+    margin-right: 0px;
+    transition-timing-function: cubic-bezier(.4, -0.5, 0, 1.2);
+}
+.how-it-works-link:hover span {
+    margin-right: 5px;
+}
+
+.darkener {
+    visibility: hidden;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    transition: 0.3s;
+}
+.darkener.shown {
+    visibility: visible;
+    opacity: 0.8;
+}
+.prompt-container {
+    position: absolute;
+    z-index: 999;
+    width: 100vw;
+    max-width: calc(100vh / 2);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 40px 0px;
+    margin-top: -100%;
+    transition: 0.5s;
+    transition-timing-function: cubic-bezier(.4, -0.5, 0, 1.2);
+    color: #25b5ee;
+    border-radius: 15px;
+}
+.prompt-container.active {
+    margin-top: 0px;
+}
+.prompt-container .prompt-transparency-wrapper {
+    opacity: 0;
+    transition: 2s;
+}
+.prompt-container.active .prompt-transparency-wrapper {
+    opacity: 1;
+}
+.prompt-container h1 {
+    font-family: 'AccordBold', sans-serif;
+}
+.prompt-container .icon-container {
+    width: 30%;
+    height: auto;
+    position: relative;
+    margin-bottom: 20px;
+}
+.prompt-container .icon-container img {
+    width: 100%;
+    height: auto;
+}
+.prompt-container .info-container {
+    position: relative;
+}
+.prompt-container .info-container .info-row {
+    position: relative;
+    margin: 40px 25px;
+}
+.prompt-container .info-container .bullet {
+    position: absolute;
+    width: 10%;
+    height: 100%;
+    float: left;
+    left: 0px;
+    padding: 0px;
+    margin: 0px;
+}
+.prompt-container .info-container .bullet h2 {
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 20px;
+}
+.prompt-container .info-container .bullet .bullet-outline {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    left: 0px;
+}
+.prompt-container .info-container .info-row p {
+    position: relative;
+    left: 0px;
+    width: 85%;
+    height: 100%;
+    text-align: left;
+    margin-left: 15%;
+    font-size: 18px;
 }

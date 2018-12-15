@@ -41,7 +41,6 @@ define([
             this.resizeGame();
 
             // Perform initial update
-            // this.update();
             requestAnimationFrame(this.update);
         },
 

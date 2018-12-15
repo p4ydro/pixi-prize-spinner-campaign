@@ -9,6 +9,21 @@
     <link rel="stylesheet" href="stylesheets/fonts.css">
     <link rel="stylesheet" href="stylesheets/style.css">
     <link rel="stylesheet" href="stylesheets/invitefriends.css">
+    <link rel="stylesheet" href="@fortawesome/fontawesome-free/css/all.min.css">
+
+    <script src="code/jquery-3.3.1.min.js"></script>
+
+    <script>
+        function showHowItWorksPrompt() {
+            $('.darkener').addClass('shown');
+            $('.prompt-container').addClass('active');
+        }
+
+        function hideHowItWorksPrompt() {
+            $('.darkener').removeClass('shown');
+            $('.prompt-container').removeClass('active');
+        }
+    </script>
 </head>
 <body>
 
@@ -33,7 +48,41 @@
         </div>
 
         <div class="how-it-works-container">
-            <a class="how-it-works-link">How it works</a>
+            <a class="how-it-works-link" onclick="showHowItWorksPrompt();"><span>How it works</span> <i class="fas fa-angle-right"></i></a>
+        </div>
+    </div>
+
+    <div class="darkener" onclick="hideHowItWorksPrompt();"></div>
+
+    <div class="prompt-container">
+        <div class="prompt-transparency-wrapper">
+            <div class="icon-container">
+                <img src="images/InviteYourFriends/HowItWorksIcon.png" class="logo-icon">
+            </div>
+            <h1>How it Works</h1>
+            <div class="info-container">
+                <div class="info-row">
+                    <div class="bullet">
+                        <h2>1</h2>
+                        <img src="images/InviteYourFriends/ListNumCircle.png" class="bullet-outline">
+                    </div>
+                    <p>Send your friend a link to spin our referral prize wheel</p>
+                </div>
+                <div class="info-row">
+                    <div class="bullet">
+                        <h2>2</h2>
+                        <img src="images/InviteYourFriends/ListNumCircle.png" class="bullet-outline">
+                    </div>
+                    <p>They’ll spin to win a special prize, which they can redeem immediately upon signup</p>
+                </div>
+                <div class="info-row">
+                    <div class="bullet">
+                        <h2>3</h2>
+                        <img src="images/InviteYourFriends/ListNumCircle.png" class="bullet-outline">
+                    </div>
+                    <p>Once they complete their first ride, you’ll get a heads up and receive the same prize automatically (no code necessary).</p>
+                </div>
+            </div>
         </div>
     </div>
 

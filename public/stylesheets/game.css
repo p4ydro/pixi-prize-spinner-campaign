@@ -34,6 +34,8 @@ canvas {
     width: 50%;
     opacity: 1;
     transition: 0.2s;
+    font-size: 30px;
+    padding: 15px 0px;
 }
 .game-overlay .spin-button.removed {
     opacity: 0;
@@ -71,7 +73,6 @@ canvas {
     padding-bottom: 40px;
     border-radius: 15px;
     overflow: hidden;
-    /* opacity: 0; */
     margin-top: -100%;
     transition: 0.5s;
     transition-timing-function: cubic-bezier(.4, -0.5, 0, 1.2);
@@ -118,11 +119,39 @@ canvas {
     padding: 0px 0px;
 }
 .prompt-container .download-button {
-    padding: 10px 20px;
+    padding: 15px 20px;
     width: 80%;
     margin: 20px 0px;
 }
-.prompt-container .links-container a {
+.prompt-container .text-code-link {
     font-size: 25px;
     margin: 20px 0px;
+}
+.prompt-container .text-code-link {
+    width: 0px;
+    height: 0px;
+    bottom: 0px;
+    left: 0px;
+    transition: 0.2s;
+    transition-timing-function: cubic-bezier(.4, -0.5, 0, 1.2);
+}
+.prompt-container .text-code-link:hover {
+    cursor: pointer;
+    filter: brightness(0.8);
+}
+.prompt-container .text-code-link .border-piece {
+    /* border-bottom: 2px solid #1fb7e9; */
+    position: absolute;
+    /* left: 0px; */
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0px;
+    border-bottom: none;
+    width: 0px;
+    transition: 0.4s;
+    transition-timing-function: cubic-bezier(.4, -0.5, 0, 1.2);
+}
+.prompt-container .text-code-link:hover .border-piece {
+    border-bottom: 2px solid #1fb7e9;
+    width: 100%;
 }

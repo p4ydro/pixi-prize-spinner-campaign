@@ -2,8 +2,9 @@ define([
     'Debug/Logger',
     'Images',
     'Managers/GameManager',
-    'Utils'
-], function(Logger, Images, GameManager, Utils) {
+    'Utils',
+    'Managers/PrizeManager'
+], function(Logger, Images, GameManager, Utils, PrizeManager) {
     
     var Spinner = function() {
         this.init();
@@ -17,9 +18,12 @@ define([
             this.finalTargetDegrees = 0;
             this.stopTime = 2;
             this.stopped = false;
+            this.prizeLocked = false;
             this.InnerSprite = new PIXI.Sprite(PIXI.loader.resources[Images.SpinnerInner].texture);
             this.BackSprite = new PIXI.Sprite(PIXI.loader.resources[Images.SpinnerBack].texture);
             this.TickSprite = new PIXI.Sprite(PIXI.loader.resources[Images.SpinnerTick].texture);
+            let p = PrizeManager.PrizeTypes;
+            this.spinResults = Object.keys(PrizeManager.PrizeTypes);
 
             this.Sprites = [
                 this.InnerSprite, this.BackSprite, this.TickSprite
@@ -27,7 +31,6 @@ define([
         },
 
         update: function() {
-            // console.log(this.InnerSprite.rotation);
             // Spinning functionality
             if (this.spun) {
                 // Easing into full speed
@@ -47,12 +50,17 @@ define([
                 this.InnerSprite.rotation += this.rotationSpeed;
 
                 // Stopped easing into target rotation
-                if (this.stopped) {
+                if (this.stopped && !this.prizeLocked) {
                     // Get current degrees
                     let currentRotation = radiansToDegrees(this.InnerSprite.rotation);
 
                     // Ease
-                    let newRotation = (this.finalTargetDegrees - currentRotation) / 5;
+                    let diff = this.finalTargetDegrees - currentRotation;
+                    let newRotation = (diff) / 5;
+
+                    if (Math.abs(diff) < 0.05) {
+                        this.prizeFound();
+                    }
 
                     // Apply new rotation
                     this.InnerSprite.rotation += degreesToRadians(newRotation);
@@ -63,6 +71,7 @@ define([
         spin: function() {
             this.spun = true;
             this.rotationSpeed = -0.2;
+            this.maximumRotationSpeed = 0.5 + (Math.random());
         },
 
         stop: function() {
@@ -70,7 +79,26 @@ define([
 
             // Find target degrees
             let currentDegrees = radiansToDegrees(this.InnerSprite.rotation);
-            this.finalTargetDegrees = currentDegrees - (currentDegrees % 45);
+            let newDeg = currentDegrees - (currentDegrees % 60);
+            // Check for left or right lock
+            let difference = currentDegrees - newDeg;
+            if (difference > 30) {
+                newDeg = currentDegrees + (60 - difference);
+            }
+            // Apply new target degrees
+            this.finalTargetDegrees = newDeg;
+        },
+
+        prizeFound: function() {
+            this.prizeLocked = true;
+
+            // Find prize based on rotation]
+            let currentFloorDegrees = this.finalTargetDegrees % 360;
+            let index = (currentFloorDegrees / 60);
+            let prize = (this.spinResults[index]);
+            
+            // Collect prize with PrizeManager
+            PrizeManager.collectPrize(prize);
         },
 
         resize: function() {

@@ -35,5 +35,6 @@ canvas {
 .game-overlay .spin-button.removed {
     opacity: 0;
 }
-.game-overlay h2 {
+.game-overlay .spin-button:hover.removed {
+    cursor: default;
 }

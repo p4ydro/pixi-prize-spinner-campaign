@@ -23,8 +23,10 @@ function(Logger, Background, GameManager, Spinner) {
 
             // Attach spinner button click
             $('.spin-button').on('click', function() {
-                spinner.spin();
-                $(this).addClass("removed");
+                if (!spinner.spun) {
+                    spinner.spin();
+                    $(this).addClass("removed");
+                }
             });
         },
 

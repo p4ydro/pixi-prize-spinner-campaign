@@ -4,8 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var gameRouter = require('./routes/game');
+var inviteFriendsRouter = require('./routes/invitefriends');
+var spinIntroRouter = require('./routes/spinintro');
+var thankYouRouter = require('./routes/thankyou');
 
 var app = express();
 
@@ -19,8 +21,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/game', gameRouter);
+app.use('/', inviteFriendsRouter);
+app.use('/spinintro', spinIntroRouter);
+app.use('/thankyou', thankYouRouter);
 
 // Application usage setup
 app.use(express.static(path.join(__dirname, 'public')));
@@ -40,7 +44,6 @@ requirejs.config({
 app.use(function(req, res, next) {
   next(createError(404));
 });
-
 
 // error handler
 app.use(function(err, req, res, next) {

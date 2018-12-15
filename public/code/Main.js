@@ -1,12 +1,9 @@
 require([
     'Managers/GameManager',
     'Game',
-    'Config',
     'Debug/Logger',
     'Images'
-], function(GameManager, Game, Config, Logger, Images) {
-    // Initialize config
-    Config.initialize();
+], function(GameManager, Game, Logger, Images) {
 
     // Start game
     function StartGame() {

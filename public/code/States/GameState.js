@@ -3,39 +3,39 @@ define([
     'UI/Background',
     'Managers/GameManager',
     'UI/Spinner',
-    'UI/SpinnerSpinButton'
 ], 
-function(Logger, Background, GameManager, Spinner, SpinnerSpinButton) {
+function(Logger, Background, GameManager, Spinner) {
+
+    var background;
+    var spinner;
 
     var GameState = {
-        background: undefined,
-        spinner: undefined,
-        spinButton: undefined,
-
         onEnter: function() {
             // Create all components
-            this.background = new Background();
-            this.spinner = new Spinner();
-            this.spinButton = new SpinnerSpinButton(this.spinner);
+            background = new Background();
+            spinner = new Spinner();
     
             // Add all components to stage
-            GameManager.GAME.GameScene.addChild(this.background.Sprite);
-            GameManager.GAME.GameScene.addChild(this.spinner.BackSprite);
-            GameManager.GAME.GameScene.addChild(this.spinner.InnerSprite);
-            GameManager.GAME.GameScene.addChild(this.spinner.TickSprite);
-            GameManager.GAME.GameScene.addChild(this.spinButton.Sprite);
+            GameManager.GAME.GameScene.addChild(background.Sprite);
+            GameManager.GAME.GameScene.addChild(spinner.BackSprite);
+            GameManager.GAME.GameScene.addChild(spinner.InnerSprite);
+            GameManager.GAME.GameScene.addChild(spinner.TickSprite);
+
+            // Attach spinner button click
+            $('.spin-button').on('click', function() {
+                spinner.spin();
+                $(this).addClass("removed");
+            });
         },
 
         update: function() {
-            this.background.update();
-            this.spinner.update();
-            this.spinButton.update();
+            background.update();
+            spinner.update();
         },
 
         resize: function() {
-            this.background.resize();
-            this.spinner.resize();
-            this.spinButton.resize();
+            background.resize();
+            spinner.resize();
         },
 
         onExit: function() {

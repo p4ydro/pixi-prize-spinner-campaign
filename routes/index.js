@@ -13,7 +13,7 @@ requirejs.config({
 /* GET home page. */
 router.get('/', function(req, res, next) {
   // send the rendered view to the client
-  res.render('spinintro.ejs');
+  res.render('game.ejs');
 });
 
 module.exports = router;

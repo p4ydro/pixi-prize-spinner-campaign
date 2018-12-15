@@ -1,0 +1,39 @@
+body {
+    text-align: center;
+}
+
+canvas {
+    padding: 0px;
+    margin: 0px;
+    background-color: #46d5fa;
+    box-shadow: 4px 0px 0px #1877b7, -4px 0px 0px #1877b7,
+                0px 0px 200px rgba(0, 0, 0, 0.4);
+    top: 0px;
+}
+
+.game-overlay {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    max-width: calc(100vh / 1.6);
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+}
+.game-overlay .button-section {
+    position: absolute;
+    bottom: 15vh;
+    width: 100%;
+    text-align: center;
+}
+.game-overlay .spin-button {
+    width: 50%;
+    opacity: 1;
+    transition: 0.2s;
+}
+.game-overlay .spin-button.removed {
+    opacity: 0;
+}
+.game-overlay h2 {
+}

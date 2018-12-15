@@ -1,5 +1,4 @@
 define([
-    // 'pixi',
     'Constants',
     'Settings/GameSettings',
     'Debug/Logger',
@@ -13,8 +12,6 @@ define([
 
     GenericGame.prototype = {
         initGame: function() {
-            Logger.log("Game", "Game intialized");
-
             // Create PixiJS Application
             this.Game = createStandardGame();
             this.Renderer = this.Game.renderer;
@@ -24,8 +21,6 @@ define([
             this.Renderer.getHalfHeight = function() {
                 return (this.height / 2);
             };
-
-            Logger.log("Game", "Load complete");
 
             // Create GameScene
             this.GameScene = new PIXI.Container();

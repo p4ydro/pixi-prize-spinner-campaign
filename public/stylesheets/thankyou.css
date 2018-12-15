@@ -1,0 +1,36 @@
+.icon-container {
+    position: relative;
+    width: 80%;
+    height: auto;
+    left: 50%;
+    top: 20px;
+    transform: translateX(-50%);
+}
+.icon-container .thank-you-icon {
+    width: 100%;
+    height: auto;
+}
+
+.bottom-half {
+    height: 50%;
+    width: 100%;;
+    position: absolute;
+    bottom: 0px;
+    top: 45%;
+}
+.bottom-half .text-container {
+    position: absolute;
+    top: 50%;
+    padding: 0px 25px;
+    transform: translateY(-50%);
+}
+.bottom-half .text-container .ok-button {
+    width: 50%;
+    margin: 30px 0px;
+}
+.bottom-half .text-container h1 {
+    margin: 30px 0px;
+}
+.bottom-half .text-container h2 {
+    padding: 0px 40px;
+}

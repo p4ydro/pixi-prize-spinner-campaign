@@ -13,7 +13,7 @@ requirejs.config({
 /* GET home page. */
 router.get('/', function(req, res, next) {
   // send the rendered view to the client
-  res.render('invitefriends.ejs');
+  res.render('thankyou.ejs');
 });
 
 module.exports = router;

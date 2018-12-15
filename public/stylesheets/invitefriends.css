@@ -1,7 +1,3 @@
-* {
-    /* border: 1px solid red; */
-}
-
 .bottom-half {
     height: 50%;
     width: 100%;;
@@ -41,16 +37,12 @@
 }
 .text-container h1 {
     width: 100%;
-    font-size: 30px;
-    font-family: 'AccordExtraBold', sans-serif;
 }
 .text-container h2 {
-    font-family: 'Accord', sans-serif;
     position: relative;
     width: 50%;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 15px;
 }
 
 .button-container {
@@ -58,15 +50,7 @@
     padding: 10px;
 }
 .button-container .share-button {
-    font-family: 'AccordMedium', sans-serif;
     width: 70%;
-    padding: 10px 0px;
-    margin: 10px 0px;
-    border: none;
-    font-size: 20px;
-    border-radius: 5px;
-    background-color: #1877b7;
-    color: white;
 }
 
 .how-it-works-container {

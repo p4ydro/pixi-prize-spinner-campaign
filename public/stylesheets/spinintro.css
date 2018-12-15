@@ -1,0 +1,40 @@
+.logo-container {
+    position: relative;
+    width: 40%;
+    height: auto;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.logo-container .top-logo {
+    margin-top: 15px;
+    width: 100%;
+    height: auto;
+}
+
+.graphic-container {
+    width: 80%;
+    position: relative;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.graphic-container .graphic {
+    width: 80%;
+    height: auto;
+}
+.graphic-container .win-rides-button {
+    width: 70%;
+}
+
+.text-container {
+    padding: 30px 0px;
+}
+.text-container h1 {
+    font-size: 25px;
+}
+
+.learn-more-container {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+}

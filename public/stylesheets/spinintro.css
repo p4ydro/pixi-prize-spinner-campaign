@@ -17,6 +17,8 @@
     text-align: center;
     left: 50%;
     transform: translateX(-50%);
+    padding-bottom: 20px;
+    border-bottom: 1px solid white;
 }
 .graphic-container .graphic {
     width: 80%;
@@ -32,9 +34,17 @@
 .text-container h1 {
     font-size: 25px;
 }
-
-.learn-more-container {
-    position: absolute;
-    bottom: 30px;
-    width: 100%;
+.text-container a {
+    text-decoration: none;
+}
+.text-container a h2 {
+    text-decoration: none;
+    color: white;
+    padding: 15px 0px;
+    transition: 0.3s;
+    transition-timing-function: cubic-bezier(.4, -0.5, 0, 1.2);
+}
+.text-container a:hover h2 {
+    filter: brightness(0.9);
+    transform: scale(1.1);
 }

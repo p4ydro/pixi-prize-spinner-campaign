@@ -23,7 +23,6 @@ app.use(cookieParser());
 
 app.use('/game', gameRouter);
 app.use('/invitefriends', inviteFriendsRouter);
-app.use('/', inviteFriendsRouter);
 app.use('/spinintro', spinIntroRouter);
 app.use('/thankyou', thankYouRouter);
 

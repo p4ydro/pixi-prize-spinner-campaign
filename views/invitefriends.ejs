@@ -6,24 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Invite Your Friends! - Via</title>
 
+    <link rel="stylesheet" href="@fortawesome/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="stylesheets/fonts.css">
     <link rel="stylesheet" href="stylesheets/style.css">
     <link rel="stylesheet" href="stylesheets/invitefriends.css">
-    <link rel="stylesheet" href="@fortawesome/fontawesome-free/css/all.min.css">
 
     <script src="code/jquery-3.3.1.min.js"></script>
 
-    <script>
-        function showHowItWorksPrompt() {
-            $('.darkener').addClass('shown');
-            $('.prompt-container').addClass('active');
-        }
-
-        function hideHowItWorksPrompt() {
-            $('.darkener').removeClass('shown');
-            $('.prompt-container').removeClass('active');
-        }
-    </script>
+    <!-- <script src="code/InviteFriends.js"></script> -->
 </head>
 <body>
 
@@ -41,9 +31,9 @@
             </div>
 
             <div class="button-container">
-                <button class="share-button">Text</button>
-                <button class="share-button">Email</button>
-                <button class="share-button">Facebook</button>
+                <button class="share-button" data-type="text">Text</button>
+                <button class="share-button" data-type="email">Email</button>
+                <button class="share-button" data-type="facebook">Facebook</button>
             </div>
         </div>
 
@@ -85,6 +75,8 @@
             </div>
         </div>
     </div>
+
+    <script data-main="code/InviteFriends.js" src="requirejs/require.js"></script>
 
 </body>
 </html>

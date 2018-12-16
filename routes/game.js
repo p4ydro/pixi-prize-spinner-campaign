@@ -10,7 +10,7 @@ requirejs.config({
   nodeRequire: require
 });
 
-/* GET home page. */
+/* GET game page. */
 router.get('/', function(req, res, next) {
   // send the rendered view to the client
   res.render('game.ejs');

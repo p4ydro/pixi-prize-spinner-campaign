@@ -135,8 +135,6 @@ canvas {
 .prompt-container .text-code-link {
     font-size: 25px;
     margin: 20px 0px;
-}
-.prompt-container .text-code-link {
     width: 0px;
     height: 0px;
     bottom: 0px;
@@ -147,6 +145,10 @@ canvas {
 .prompt-container .text-code-link:hover {
     cursor: pointer;
     filter: brightness(0.8);
+}
+.prompt-container .text-code-link:active {
+    transform: scale(0.95);
+    filter: brightness(0.75);
 }
 .prompt-container .text-code-link .border-piece {
     position: absolute;

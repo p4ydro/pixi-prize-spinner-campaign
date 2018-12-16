@@ -69,4 +69,16 @@ button:focus {
     width: 100vw;
     max-width: 100vw;
   }
+  h1 {
+    font-size: 5vw;
+  }
+  h2 {
+    font-size: 4.5vw;
+  }
+  h3 {
+    font-size: 4vw;
+  }
+  button {
+    font-size: 3.75vw;
+  }
 }

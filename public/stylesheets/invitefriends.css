@@ -176,3 +176,9 @@
     margin-left: 15%;
     font-size: 18px;
 }
+
+@media (orientation: portrait) {
+    .how-it-works-container .how-it-works-link {
+        font-size: 5vw;
+    }
+}

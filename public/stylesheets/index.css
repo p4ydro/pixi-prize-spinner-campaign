@@ -10,7 +10,6 @@
 .header h1 {
     position: absolute;
     font-family: 'AccordExtraBold', sans-serif;
-    font-size: 35px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

@@ -95,7 +95,7 @@ canvas {
 .prompt-container {
     opacity: 0;
     position: absolute;
-    width: 100vw;
+    width: 90vw;
     max-width: calc(100vh / 2);
     left: 50%;
     top: 50%;
@@ -145,8 +145,12 @@ canvas {
     border-radius: 5px;
     width: 70%;
     left: 50%;
-    padding: 5px 0px;
+    padding: 15px 0px;
     transform: translateX(-50%);
+}
+.prompt-container .code-container h1 {
+    padding: 0px 3vw;
+    margin: 0px;
 }
 .prompt-container .download-button {
     padding: 15px 20px;
@@ -211,7 +215,10 @@ canvas {
     .prompt-container .code-container {
         width: 80%;
         left: 50%;
-        padding: 1vw 0px;
+        padding: 3vw 0px;
+    }
+    .prompt-container .code-container h1 {
+        padding: 0px 3vw;
     }
     .prompt-container .download-button {
         padding: 2vw 4vw;

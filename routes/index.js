@@ -7,10 +7,10 @@ requirejs.config({
   nodeRequire: require
 });
 
-/* GET game page. */
+/* GET index page. */
 router.get('/', function(req, res, next) {
   // send the rendered view to the client
-  res.render('game.ejs');
+  res.render('index.ejs');
 });
 
 module.exports = router;

@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+var indexRouter = require('./routes/index');
 var gameRouter = require('./routes/game');
 var inviteFriendsRouter = require('./routes/invitefriends');
 var spinIntroRouter = require('./routes/spinintro');
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+app.use('/', indexRouter);
 app.use('/game', gameRouter);
 app.use('/invitefriends', inviteFriendsRouter);
 app.use('/spinintro', spinIntroRouter);

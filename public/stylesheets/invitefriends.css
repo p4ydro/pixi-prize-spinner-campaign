@@ -95,9 +95,10 @@
     opacity: 0.8;
 }
 .prompt-container {
+    opacity: 0;
     position: absolute;
     z-index: 999;
-    width: 100vw;
+    width: 90vw;
     max-width: calc(100vh / 2);
     left: 50%;
     top: 50%;
@@ -111,6 +112,7 @@
     border-radius: 15px;
 }
 .prompt-container.active {
+    opacity: 1;
     margin-top: 0px;
 }
 .prompt-container .prompt-transparency-wrapper {
@@ -180,5 +182,26 @@
 @media (orientation: portrait) {
     .how-it-works-container .how-it-works-link {
         font-size: 5vw;
+    }
+    .text-container {
+        position: relative;
+        width: 100%;
+        text-align: center;
+        margin: 1vh 0px;
+    }
+    .prompt-container {
+        padding: 3vh 0px;
+    }
+    .prompt-container .icon-container {
+        margin-bottom: 2vh;
+    }
+    .prompt-container .info-container .bullet h2 {
+        font-size: 4vw;
+    }
+    .prompt-container .info-container .bullet .bullet-outline {
+        top: 50%;
+    }
+    .prompt-container .info-container .info-row {
+        margin: 2vh 3vw;
     }
 }

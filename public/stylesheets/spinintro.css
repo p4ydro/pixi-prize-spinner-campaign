@@ -13,7 +13,7 @@
 }
 
 .graphic-container {
-    width: 100%;
+    width: 100vw;
     max-width: 60vh;
     position: relative;
     text-align: center;
@@ -41,9 +41,6 @@
 .text-container {
     padding: 30px 0px;
 }
-.text-container h1 {
-    font-size: 25px;
-}
 .text-container a {
     text-decoration: none;
 }
@@ -60,4 +57,19 @@
 }
 .text-container a:hover h2 i {
     margin-left: 5px;
+}
+
+@media (orientation: portrait) {
+    .logo-container {
+        width: 40%;
+        max-width: 23vh;
+    }
+    .graphic-container {
+        width: 50vh;
+        min-width: 20vh;
+        max-width: 50vh;
+    }
+    .graphic-container .graphic {
+        width: 80%;
+    }
 }

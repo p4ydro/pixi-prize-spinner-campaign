@@ -1,6 +1,7 @@
 .logo-container {
     position: relative;
     width: 40%;
+    max-width: 18vh;
     height: auto;
     left: 50%;
     transform: translateX(-50%);
@@ -12,12 +13,21 @@
 }
 
 .graphic-container {
-    width: 80%;
+    width: 100%;
+    max-width: 60vh;
     position: relative;
     text-align: center;
     left: 50%;
     transform: translateX(-50%);
     padding-bottom: 20px;
+}
+.graphic-container:after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
     border-bottom: 2px solid white;
 }
 .graphic-container .graphic {

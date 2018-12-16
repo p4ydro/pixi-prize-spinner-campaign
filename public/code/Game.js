@@ -46,7 +46,11 @@ define([
 
         resizeGame: function() {
             let height = window.innerHeight;
-            let width = height / Constants.MAXIMUM_GAME_RATIO;
+            let width = window.innerWidth;
+            // If landscape, set width with ratio
+            if (width >= height) {
+                width = height / Constants.MAXIMUM_GAME_RATIO;
+            }
     
             this.Game.renderer.resize(width, height);
     
@@ -70,6 +74,7 @@ define([
             width: Constants.GAME_WIDTH,
             height: Constants.GAME_HEIGHT,
             roundPixels: GameSettings.ROUND_PIXELS,
+            transparent: true
         });
 
         a.Tink = new Tink(PIXI, a.renderer.view);

@@ -34,11 +34,10 @@
 }
 .pages-list a:hover .list-item {
     transform: scale(1.025);
-    filter: brightness(0.8);
 }
 .pages-list a:active .list-item {
-    transform: scale(0.95);
-    filter: brightness(0.7);
+    transform: scale(0.995);
+    filter: brightness(0.8);
 }
 .pages-list .list-item {
     position: relative;

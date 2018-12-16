@@ -15,6 +15,7 @@ body {
 
 #main {
   background-color: #46d5fa;
+  background-image: linear-gradient(#1fb7e9, #46d5fa);
   position: relative;
   height: 100vh;
   width: 100vw;
@@ -61,4 +62,11 @@ button:active {
 button:focus {
   outline: none;
   border: none;
+}
+
+@media (orientation: portrait) {
+  #main {
+    width: 100vw;
+    max-width: 100vw;
+  }
 }

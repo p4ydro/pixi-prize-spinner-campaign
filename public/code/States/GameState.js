@@ -1,22 +1,17 @@
 define([
     'Debug/Logger',
-    'UI/Background',
     'Managers/GameManager',
     'UI/Spinner',
 ], 
-function(Logger, Background, GameManager, Spinner) {
+function(Logger, GameManager, Spinner) {
 
-    var background;
     var spinner;
 
     var GameState = {
         onEnter: function() {
-            // Create all components
-            background = new Background();
             spinner = new Spinner();
     
             // Add all components to stage
-            GameManager.GAME.GameScene.addChild(background.Sprite);
             GameManager.GAME.GameScene.addChild(spinner.BackSprite);
             GameManager.GAME.GameScene.addChild(spinner.InnerSprite);
             GameManager.GAME.GameScene.addChild(spinner.TickSprite);
@@ -33,12 +28,10 @@ function(Logger, Background, GameManager, Spinner) {
         },
 
         update: function() {
-            background.update();
             spinner.update();
         },
 
         resize: function() {
-            background.resize();
             spinner.resize();
         },
 

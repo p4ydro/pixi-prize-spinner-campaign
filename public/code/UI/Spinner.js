@@ -87,6 +87,9 @@ define([
             }
             // Apply new target degrees
             this.finalTargetDegrees = newDeg;
+
+            // Hide spinning text
+            $('.game-overlay .spin-text .spinning-text').css('opacity', '0');
         },
 
         prizeFound: function() {
@@ -103,9 +106,12 @@ define([
         },
 
         resize: function() {
-            Utils.resizeSpriteByWidth(this.BackSprite, (GameManager.GAME.Renderer.width * 0.75));
-            Utils.resizeSpriteByWidth(this.InnerSprite, (GameManager.GAME.Renderer.width * 0.58));
-            Utils.resizeSpriteByWidth(this.TickSprite, (GameManager.GAME.Renderer.width * 0.12));
+            let r = GameManager.GAME.Renderer;
+            let rec = new PIXI.Rectangle(0, 0, r.width, r.height);
+
+            Utils.resizeSpriteByWidth(this.BackSprite, (rec.width * 0.75));
+            Utils.resizeSpriteByWidth(this.InnerSprite, (rec.width * 0.58));
+            Utils.resizeSpriteByWidth(this.TickSprite, (rec.width * 0.12));
             // Set initial position
             let x = GameManager.GAME.Renderer.getHalfWidth(), y = (GameManager.GAME.Renderer.height * 0.4);
 

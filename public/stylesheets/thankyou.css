@@ -8,6 +8,7 @@
 }
 .icon-container .thank-you-icon {
     width: 100%;
+    max-width: 50vh;
     height: auto;
 }
 

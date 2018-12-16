@@ -34,14 +34,23 @@ canvas {
     width: 50%;
     opacity: 1;
     transition: 0.2s;
-    font-size: 30px;
-    padding: 15px 0px;
+    font-size: 25px;
+    margin-bottom: 40px;
 }
 .game-overlay .spin-button.removed {
     opacity: 0;
 }
 .game-overlay .spin-button:hover.removed {
     cursor: default;
+}
+.game-overlay .spin-text h2 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: 0.5s;
+}
+.game-overlay .spin-text .spinning-text {
+    opacity: 0;
 }
 
 .darkener {
@@ -140,9 +149,7 @@ canvas {
     filter: brightness(0.8);
 }
 .prompt-container .text-code-link .border-piece {
-    /* border-bottom: 2px solid #1fb7e9; */
     position: absolute;
-    /* left: 0px; */
     left: 50%;
     transform: translateX(-50%);
     bottom: 0px;

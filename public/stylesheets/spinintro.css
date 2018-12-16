@@ -18,7 +18,7 @@
     left: 50%;
     transform: translateX(-50%);
     padding-bottom: 20px;
-    border-bottom: 1px solid white;
+    border-bottom: 2px solid white;
 }
 .graphic-container .graphic {
     width: 80%;
@@ -44,7 +44,10 @@
     transition: 0.3s;
     transition-timing-function: cubic-bezier(.4, -0.5, 0, 1.2);
 }
-.text-container a:hover h2 {
-    filter: brightness(0.9);
-    transform: scale(1.1);
+.text-container a h2 i {
+    transition: 0.3s;
+    transition-timing-function: cubic-bezier(.4, -0.5, 0, 1.2);
+}
+.text-container a:hover h2 i {
+    margin-left: 5px;
 }

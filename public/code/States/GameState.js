@@ -26,6 +26,8 @@ function(Logger, Background, GameManager, Spinner) {
                 if (!spinner.spun) {
                     spinner.spin();
                     $(this).addClass("removed");
+                    $('.game-overlay .spin-text .seconds-text').css('opacity', '0');
+                    $('.game-overlay .spin-text .spinning-text').css('opacity', '1');
                 }
             });
         },

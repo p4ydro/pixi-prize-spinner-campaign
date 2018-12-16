@@ -15,9 +15,7 @@ define([
 
     PrizeManager.collectPrize = function(prizeType) {
         Logger.log("PrizeManager", prizeType);
-
-        console.log(prizeType);
-
+        
         // Show prompt
         this.openPrizePrompt(prizeType);
     };

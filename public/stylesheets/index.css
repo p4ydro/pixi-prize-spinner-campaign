@@ -33,6 +33,7 @@
 }
 .pages-list a:hover .list-item {
     transform: scale(1.025);
+    cursor: pointer;
 }
 .pages-list a:active .list-item {
     transform: scale(0.995);

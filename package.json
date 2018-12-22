@@ -11,12 +11,13 @@
     "debug": "~2.6.9",
     "ejs": "^2.6.1",
     "express": "~4.16.0",
+    "file-system": "^2.2.2",
     "http-errors": "~1.6.2",
+    "jsonwebtoken": "^8.4.0",
     "morgan": "~1.9.0",
     "pixi": "^0.3.1",
+    "reqclient": "^2.4.0",
+    "request": "^2.88.0",
     "requirejs": "^2.3.6"
-  },
-  "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.6.1"
   }
 }

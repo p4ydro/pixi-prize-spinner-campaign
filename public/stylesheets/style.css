@@ -1,6 +1,7 @@
 * {
   padding: 0px;
   margin: 0px;
+  cursor: default;
 }
 
 body {
@@ -38,6 +39,9 @@ p {
   font-family: 'AccordReg', sans-serif;
   font-size: 20px;
 }
+a:hover, a:hover>* {
+  cursor: pointer !important;
+}
 
 button {
   font-family: 'AccordMedium', sans-serif;
@@ -63,6 +67,7 @@ button:focus {
   outline: none;
   border: none;
 }
+
 .content-container {
     position: absolute;
     top: 50%;

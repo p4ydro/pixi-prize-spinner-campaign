@@ -2,7 +2,6 @@ var express = require('express');
 var requirejs = require('requirejs');
 var router = express.Router();
 
-
 requirejs.config({
   nodeRequire: require
 });

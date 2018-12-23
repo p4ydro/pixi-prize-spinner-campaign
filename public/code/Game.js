@@ -42,6 +42,9 @@ define([
 
             // Perform initial update
             requestAnimationFrame(this.update);
+
+            // Hide loading screen
+            $('.loading-overlay').fadeOut(500);
         },
 
         resizeGame: function() {

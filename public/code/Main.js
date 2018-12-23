@@ -2,12 +2,15 @@ require([
     'Managers/GameManager',
     'Game',
     'Debug/Logger',
-    'Images'
+    'Images',
 ], function(GameManager, Game, Logger, Images) {
 
     // Start game
     function StartGame() {
-        // FIXME Temporary Preload
+
+        // Test Requesting
+
+        // Preload the game
         PIXI.loader
             .add(Object.values(Images))
             .on("progress", function(e) {

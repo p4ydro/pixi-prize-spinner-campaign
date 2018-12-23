@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Via Spinner</title>
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="stylesheets/fonts.css">
     <link rel="stylesheet" href="stylesheets/style.css">
     <link rel="stylesheet" href="stylesheets/game.css">
@@ -22,11 +23,22 @@
 
     <script data-main="code/Main.js" src="requirejs/require.js"></script>
     
+
     <div class="background-holder"></div>
 
     <div id="main">
 
         <div class="game-overlay">
+
+            <div class="loading-overlay">
+                <div class="text-section">
+                    <h1 class="loading-text">
+                        <i class="fas fa-spinner loading-icon fa-spin"></i>
+                        Loading...
+                    </h1>
+                </div>
+            </div>
+
             <div class="button-section">
                 <button class="spin-button">Spin</button>
                 <div class="spin-text">

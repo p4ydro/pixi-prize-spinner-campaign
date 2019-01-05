@@ -91,7 +91,17 @@ canvas {
     visibility: visible;
     opacity: 0.8;
 }
-
+.shine-image .shine-piece {
+    z-index: 5000;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    right: 50%;
+}
+.shine-piece {
+    width: 70%;
+}
 .prompt-container {
     opacity: 0;
     position: absolute;
@@ -123,7 +133,8 @@ canvas {
 .prompt-container .prize-section {
     font-family: "AccordBold", sans-serif;
     background-color: #f28f32;
-    padding: 80px 0px;
+    padding: 60px 0px;
+    padding-top: 130px;
 }
 .prompt-container .prize-section h1 {
     font-size: 60px;
@@ -224,7 +235,8 @@ canvas {
         padding-bottom: 5vw;
     }
     .prompt-container .prize-section {
-        padding: 5vw 0px;
+        padding: 60px 0px;
+        padding-top: 130px;
     }
     .prompt-container .prize-section h1 {
         font-size: 8vw;

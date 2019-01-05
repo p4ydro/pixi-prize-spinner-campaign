@@ -35,6 +35,10 @@ app.use('/thankyou', thankYouRouter);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
 
+// XXXXXXXX
+// User referral code & properties
+app.referralCode = "nocode";
+
 // Using referral code for receiving reward code
 var client = new RequestClient({
   baseUrl: "https://referralgame.ridewithvia.com/",
@@ -93,5 +97,9 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error.ejs');
 });
+
+app.getReferralCode = function() {
+  return this.referralCode;
+}
 
 module.exports = app;

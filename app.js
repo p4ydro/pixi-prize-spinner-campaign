@@ -3,6 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+// var request = require('request');
+// var http = require('http');
+var RequestClient = require("reqclient").RequestClient;
 
 var indexRouter = require('./routes/index');
 var gameRouter = require('./routes/game');
@@ -31,6 +34,39 @@ app.use('/thankyou', thankYouRouter);
 // Application usage setup
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
+
+// Using referral code for receiving reward code
+var client = new RequestClient({
+  baseUrl: "https://referralgame.ridewithvia.com/",
+  debugRequest: true, debugResponse: true
+});
+
+var p = client.post(
+"", 
+{
+  "referrer_code": "parker4j4",
+  "reward_type": "1"
+}, 
+{
+  headers: {
+    "Content-Type": "application/json",
+    "x-api-key": "he8UKuofcja59p2lfQx5t1KdOJ4OMuhC3tJG3ayJ",
+}
+});
+
+p.then(apiSuccess, apiReject);
+
+function apiSuccess(httpResponse) {
+  console.log("API Successfully returned a response: " + JSON.stringify(httpResponse));
+  console.log("Supplied reward code: " + httpResponse.reward_code);
+}
+function apiReject(httpResponse) {
+  try {
+    console.log("Api rejected: " + httpResponse["message"]);
+  } catch(e) {
+    console.error(e);
+  }
+}
 
 // RequireJS setup
 var requirejs = require('requirejs');

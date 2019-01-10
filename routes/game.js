@@ -9,8 +9,8 @@ requirejs.config({
 
 /* GET game page. */
 router.get('/', function(req, res, next) {
-  // send the rendered view to the client
-  res.render('game.ejs');
+  // Send the rendered view to the client, passing the referral code
+  res.render('game.ejs', {referralCode: req.app.referralCode});
 });
 
 module.exports = router;

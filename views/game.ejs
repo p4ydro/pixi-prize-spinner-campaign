@@ -21,23 +21,27 @@
         <div class="noscript">You must enable JavaScript in your browser settings in order to participate in this game.</div>
     </noscript>
 
+    <!-- <h2>Variable</h2>
+    <p><%= referralCode %></p> -->
+
     <script data-main="code/Main.js" src="requirejs/require.js"></script>
-    
 
     <div class="background-holder"></div>
+
+    <div class="loading-overlay">
+        <div class="text-section">
+            <h1 class="loading-text">
+                <i class="fas fa-spinner loading-icon fa-spin"></i>
+                Loading...
+            </h1>
+        </div>
+    </div>
 
     <div id="main">
 
         <div class="game-overlay">
 
-            <div class="loading-overlay">
-                <div class="text-section">
-                    <h1 class="loading-text">
-                        <i class="fas fa-spinner loading-icon fa-spin"></i>
-                        Loading...
-                    </h1>
-                </div>
-            </div>
+            
 
             <div class="button-section">
                 <button class="spin-button">Spin</button>
@@ -55,9 +59,9 @@
                 <div class="prize-section">
                     <h1>50% Off</h1>
                 </div>
-                <div class="shine-image">
-                    <img class="shine-piece" src="images/game/shine.png">
-                </div>
+                <!-- <div class="shine-image">
+                    <img class="shine-piece" src="images/Game/shine.png">
+                </div> -->
                 <div class="description-section">
 
                     <h1 class="prize-text">You've won 50% off your first 5 rides!</h1>

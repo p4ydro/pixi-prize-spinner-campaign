@@ -25,6 +25,10 @@ define([
             if (data) {
                 // If we received a reward code, show it in the prompt
                 $(".code-container .reward-code-text").html(data);
+                // Apply reward code to download link
+                downloadLink = $('.links-container .button-container a');
+                let newLink = downloadLink.attr("href") + data;
+                downloadLink.attr("href", newLink);
 
                 // Show prompt
                 this.openPrizePrompt(prizeType);

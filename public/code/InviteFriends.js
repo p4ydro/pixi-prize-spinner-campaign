@@ -1,16 +1,12 @@
-$('.share-button').on('click', function() {
-    // Per share-type share behavior
-    switch (this.dataset.type) {
-        case "text":
-        break;
-        case "email":
-        break;
-        case "facebook":
-        break;
-    }
+$('.share-button-clickable').click(function(e) {
+    // Use a post to enter thank you page
+    $.post("/invitefriends", { intent: "share", type: this.dataset.type }, function(data){
+        console.log("DATA: " + data);
 
-    // Enter next page
-    enterThankYouPage();
+        if (data == "OK") {
+            enterThankYouPage();
+        }
+    });
 });
 
 function showHowItWorksPrompt() {

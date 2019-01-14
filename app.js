@@ -3,8 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-// var request = require('request');
-// var http = require('http');
+var bodyParser = require('body-parser')
 var RequestClient = require("reqclient").RequestClient;
 
 var indexRouter = require('./routes/index');
@@ -20,11 +19,13 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 
+// Cookie setup
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+// All routes setup
 app.use('/', indexRouter);
 app.use('/game', gameRouter);
 app.use('/invitefriends', inviteFriendsRouter);
@@ -35,7 +36,34 @@ app.use('/thankyou', thankYouRouter);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
 
-// XXXXXXXX
+// POST listener setup
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+app.post('/invitefriends', function(req, res) {
+  console.log("POST from /invitefriends heard");
+
+  // Check if message is for a share request
+  if (req.body.intent == "share") {
+    // Redirect user to their destined share
+    switch (req.body.type) {
+      case "text":
+        console.log("Text share initialized");
+        // req.redirect("sms:?&body=I%20ride%20with%20Via%2C%20you%20should%20too!%20Spin%20the%20wheel%20to%20score%20a%20special%20prize.%20%7BLink%7D");
+      break;
+      case "email":
+        console.log("Email share initialized");
+      break;
+      case "facebook":
+        console.log("Facebook share initialized");
+      break;
+    }
+  }
+
+  res.sendStatus(200);
+  res.end("yes");
+});
+
 // User referral code & properties
 app.referralCode = "nocode";
 

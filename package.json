@@ -19,5 +19,8 @@
     "reqclient": "^2.4.0",
     "request": "^2.88.0",
     "requirejs": "^2.3.6"
+  },
+  "devDependencies": {
+    "body-parser": "^1.18.3"
   }
 }

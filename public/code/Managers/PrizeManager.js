@@ -16,20 +16,35 @@ define([
     PrizeManager.collectPrize = function(prizeType) {
         Logger.log("PrizeManager", prizeType);
         
-        let prizeIndex = this.findRewardTypeByPrizeType(prizeType);
+        var prizeIndex = this.findRewardTypeByPrizeType(prizeType);
+        var referrercode = "empty";
 
-        // Make post request for the reward code
-        $.post("/game", { rewardtype: prizeIndex }, function(data) {
-            // Check if we received a reward code back
+        // Make post request to get the referrer code
+        $.post("/game/referrercode", function(data) {
+
+            // Check upon receiving referrer code back
             if (data) {
-                // If we received a reward code, show it in the prompt
-                $(".code-container .reward-code-text").html(data);
-
-                // Show prompt
-                this.openPrizePrompt(prizeType);
+                referrercode = data;
+                console.log("POST returned a referrer code of", referrercode);
             } else {
-                console.error("Reward code not found.", data);
+                console.error("Reward code not here");
+                return;
             }
+
+            // Make post request for the reward code
+            $.post("/game/rewardcode", { rewardtype: prizeIndex, referrercode: referrercode }, function(data) {
+                // Check if we received a reward code back
+                if (data) {
+                    // If we received a reward code, show it in the prompt
+                    $(".code-container .reward-code-text").html(data);
+
+                    // Show prompt
+                    this.openPrizePrompt(prizeType);
+                } else {
+                    console.error("Reward code not found.", data);
+                }
+            }.bind(this));
+
         }.bind(this));
     };
 

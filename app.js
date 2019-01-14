@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 var RequestClient = require("reqclient").RequestClient;
 
 var indexRouter = require('./routes/index');
@@ -13,9 +13,6 @@ var spinIntroRouter = require('./routes/spinintro');
 var thankYouRouter = require('./routes/thankyou');
 
 var app = express();
-// User referral code & properties
-app.referrercode = "parker4j4";
-app.rewardcode = "nocode";
 
 // View engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -56,13 +53,15 @@ var client = new RequestClient({
   debugRequest: true, debugResponse: true
 });
 
-app.post('/game', function(req, res) {
+app.getRewardCode = function(referrercode, rewardtype, res) {
+  console.log("Called reward code in app from router");
+
   // Create post client
   var p = client.post(
   "", 
   {
-    "referrer_code": app.referrercode,
-    "reward_type": req.body.rewardtype
+    "referrer_code": referrercode,
+    "reward_type": rewardtype
   }, 
   {
     headers: {
@@ -91,7 +90,7 @@ app.post('/game', function(req, res) {
       console.error(e);
     }
   }
-});
+}
 
 // RequireJS setup
 var requirejs = require('requirejs');
@@ -118,9 +117,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error.ejs');
 });
-
-app.getReferrerCode = function() {
-  return this.referrercode;
-}
 
 module.exports = app;

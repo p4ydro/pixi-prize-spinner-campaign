@@ -10,9 +10,9 @@ requirejs.config({
   nodeRequire: require
 });
 
-/* GET home page. */
+/* GET page. */
 router.get('/', function(req, res, next) {
-  // send the rendered view to the client
+  // Send the rendered view to the client
   res.render('spinintro.ejs', { referrer_code: req.query.referrer_code });
 });
 

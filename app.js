@@ -13,6 +13,9 @@ var spinIntroRouter = require('./routes/spinintro');
 var thankYouRouter = require('./routes/thankyou');
 
 var app = express();
+// User referral code & properties
+app.referrercode = "parker4j4";
+app.rewardcode = "nocode";
 
 // View engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -41,31 +44,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.post('/invitefriends', function(req, res) {
-  console.log("POST from /invitefriends heard");
-
-  // Check if message is for a share request
-  if (req.body.intent == "share") {
-    // Redirect user to their destined share
-    switch (req.body.type) {
-      case "text":
-        console.log("Text share initialized");
-        // req.redirect("sms:?&body=I%20ride%20with%20Via%2C%20you%20should%20too!%20Spin%20the%20wheel%20to%20score%20a%20special%20prize.%20%7BLink%7D");
-      break;
-      case "email":
-        console.log("Email share initialized");
-      break;
-      case "facebook":
-        console.log("Facebook share initialized");
-      break;
-    }
-  }
-
+  console.log("POST from /invitefriends");
+  
   res.sendStatus(200);
   res.end("yes");
 });
-
-// User referral code & properties
-app.referralCode = "nocode";
 
 // Using referral code for receiving reward code
 var client = new RequestClient({
@@ -73,32 +56,42 @@ var client = new RequestClient({
   debugRequest: true, debugResponse: true
 });
 
-var p = client.post(
-"", 
-{
-  "referrer_code": "parker4j4",
-  "reward_type": "1"
-}, 
-{
-  headers: {
-    "Content-Type": "application/json",
-    "x-api-key": "he8UKuofcja59p2lfQx5t1KdOJ4OMuhC3tJG3ayJ",
-}
-});
-
-p.then(apiSuccess, apiReject);
-
-function apiSuccess(httpResponse) {
-  console.log("API Successfully returned a response: " + JSON.stringify(httpResponse));
-  console.log("Supplied reward code: " + httpResponse.reward_code);
-}
-function apiReject(httpResponse) {
-  try {
-    console.log("Api rejected: " + httpResponse["message"]);
-  } catch(e) {
-    console.error(e);
+app.post('/game', function(req, res) {
+  // Create post client
+  var p = client.post(
+  "", 
+  {
+    "referrer_code": app.referrercode,
+    "reward_type": req.body.rewardtype
+  }, 
+  {
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": "he8UKuofcja59p2lfQx5t1KdOJ4OMuhC3tJG3ayJ",
   }
-}
+  });
+
+  // Promise responses
+  p.then(apiSuccess, apiReject);
+
+  // Success
+  function apiSuccess(httpResponse) {
+    console.log("API Successfully returned a response: " + JSON.stringify(httpResponse));
+    console.log("Supplied reward code: " + httpResponse.reward_code);
+    
+    app.rewardcode = httpResponse.reward_code;
+
+    res.send(app.rewardcode);
+  }
+  // Failure
+  function apiReject(httpResponse) {
+    try {
+      console.log("Api rejected: " + httpResponse["message"]);
+    } catch(e) {
+      console.error(e);
+    }
+  }
+});
 
 // RequireJS setup
 var requirejs = require('requirejs');
@@ -126,8 +119,8 @@ app.use(function(err, req, res, next) {
   res.render('error.ejs');
 });
 
-app.getReferralCode = function() {
-  return this.referralCode;
+app.getReferrerCode = function() {
+  return this.referrercode;
 }
 
 module.exports = app;

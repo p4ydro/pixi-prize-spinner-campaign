@@ -16,8 +16,21 @@ define([
     PrizeManager.collectPrize = function(prizeType) {
         Logger.log("PrizeManager", prizeType);
         
-        // Show prompt
-        this.openPrizePrompt(prizeType);
+        let prizeIndex = this.findRewardTypeByPrizeType(prizeType);
+
+        // Make post request for the reward code
+        $.post("/game", { rewardtype: prizeIndex }, function(data) {
+            // Check if we received a reward code back
+            if (data) {
+                // If we received a reward code, show it in the prompt
+                $(".code-container .reward-code-text").html(data);
+
+                // Show prompt
+                this.openPrizePrompt(prizeType);
+            } else {
+                console.error("Reward code not found.", data);
+            }
+        }.bind(this));
     };
 
     PrizeManager.openPrizePrompt = function(prizeType) {
@@ -75,6 +88,34 @@ define([
 
         return prizeObj;
     };
+
+    PrizeManager.findRewardTypeByPrizeType = function(prizeType) {
+        var result = -1;
+
+        // Find reward code based on table provided by Via
+        switch (prizeType) {
+            case this.PrizeTypes.TenDollars:
+                result = 1;
+            break;
+            case this.PrizeTypes.TwentyDollars:
+                result = 2;
+            break;
+            case this.PrizeTypes.ThirtyDollars:
+                result = 3;
+            break;
+            case this.PrizeTypes.TwoRides:
+                result = 4;
+            break;
+            case this.PrizeTypes.FiftyPercent:
+                result = 5;
+            break;
+            case this.PrizeTypes.ViaPass:
+                result = 6;
+            break;
+        }
+
+        return result;
+    }
 
     return PrizeManager;
 })

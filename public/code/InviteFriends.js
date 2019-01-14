@@ -1,8 +1,6 @@
 $('.share-button-clickable').click(function(e) {
     // Use a post to enter thank you page
     $.post("/invitefriends", { intent: "share", type: this.dataset.type }, function(data){
-        console.log("DATA: " + data);
-
         if (data == "OK") {
             enterThankYouPage();
         }

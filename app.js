@@ -12,7 +12,7 @@ var inviteFriendsRouter = require('./routes/invitefriends');
 var spinIntroRouter = require('./routes/spinintro');
 var thankYouRouter = require('./routes/thankyou');
 
-var app = express();
+app = express();
 
 // View engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -17,34 +17,20 @@ define([
         Logger.log("PrizeManager", prizeType);
         
         var prizeIndex = this.findRewardTypeByPrizeType(prizeType);
-        var referrercode = "empty";
+        var referrercode = getQueryStringParams()["referrer_code"];
 
-        // Make post request to get the referrer code
-        $.post("/game/referrercode", function(data) {
-
-            // Check upon receiving referrer code back
+        // Make post request for the reward code
+        $.post("/game/rewardcode", { rewardtype: prizeIndex, referrercode: referrercode }, function(data) {
+            // Check if we received a reward code back
             if (data) {
-                referrercode = data;
-                console.log("POST returned a referrer code of", referrercode);
+                // If we received a reward code, show it in the prompt
+                $(".code-container .reward-code-text").html(data);
+
+                // Show prompt
+                this.openPrizePrompt(prizeType);
             } else {
-                console.error("Reward code not here");
-                return;
+                console.error("Reward code not found.", data);
             }
-
-            // Make post request for the reward code
-            $.post("/game/rewardcode", { rewardtype: prizeIndex, referrercode: referrercode }, function(data) {
-                // Check if we received a reward code back
-                if (data) {
-                    // If we received a reward code, show it in the prompt
-                    $(".code-container .reward-code-text").html(data);
-
-                    // Show prompt
-                    this.openPrizePrompt(prizeType);
-                } else {
-                    console.error("Reward code not found.", data);
-                }
-            }.bind(this));
-
         }.bind(this));
     };
 
@@ -130,7 +116,23 @@ define([
         }
 
         return result;
-    }
+    };
+
+    getQueryStringParams = query => {
+        return (function(a) {
+            if (a == "") return {};
+            var b = {};
+            for (var i = 0; i < a.length; ++i)
+            {
+                var p=a[i].split('=', 2);
+                if (p.length == 1)
+                    b[p[0]] = "";
+                else
+                    b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+            }
+            return b;
+        })(window.location.search.substr(1).split('&'));
+    };
 
     return PrizeManager;
 })

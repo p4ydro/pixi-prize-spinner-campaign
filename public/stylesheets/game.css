@@ -93,7 +93,7 @@ canvas {
 }
 
 .prompt-container {
-    /* opacity: 0; */
+    opacity: 0;
     position: absolute;
     width: 90vw;
     max-width: calc(100vh / 2);
@@ -104,7 +104,7 @@ canvas {
     padding-bottom: 40px;
     border-radius: 15px;
     overflow: hidden;
-    /* margin-top: -100vh; */
+    margin-top: -100vh;
     transition: 0.5s;
     transition-timing-function: cubic-bezier(.4, -0.5, 0, 1.2);
     z-index: 999;
@@ -217,6 +217,9 @@ canvas {
 }
 .prompt-container .text-phone-form .submit-button:hover {
     cursor: pointer;
+}
+.prompt-container #send-code-sms-form label {
+    display: none !important;
 }
 
 .loading-overlay {

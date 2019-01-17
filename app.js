@@ -100,11 +100,11 @@ app.getRewardCode = function(referrercode, rewardtype, res) {
 
 app.post('/sms', function(req, res) {
 
-  console.log("Request to send SMS called for", req.query.phone_number);
+  console.log("Request to send SMS called for " + req.query.phone_number + " with code of " + req.query.reward_code);
 
   smsClient.messages
   .create({
-     body: 'Your Via reward code is: 100',
+     body: 'Your Via reward code is: ' + req.query.reward_code,
      from: '+12064294476',
      to: '+1' + req.query.phone_number
    })

@@ -13,34 +13,8 @@
     <script src="code/tink.js"></script>
     <script src="code/pixi.js"></script>
     <script src="code/jquery-3.3.1.min.js"></script>
+    <script src="jquery-validation/dist/jquery.validate.min.js"></script>
     <link rel="icon" href="images/favicon.ico">
-
-    <script>
-        var smsSent = false;
-        $(document).ready(function() {
-            $('.text-code-link').click(function(e) {
-                console.log("Clicked");
-                $('.prompt-container .text-phone-form').fadeIn(300);
-                $('.prompt-container .text-phone-form').css('display','block');
-            });
-        });
-
-        function sendSMS() {
-            if (smsSent) return;
-
-            smsSent = true;
-            console.log("SMS Sent.");
-            $('.text-code-link').fadeOut(300);
-            $('.prompt-container .text-phone-form').fadeOut(300);
-
-            // Send SMS
-            // $.post('/sms?phone_number=' + $('.prompt-container .text-phone-form .phone-input').value +
-            // '?reward_code=' + $('.code-container .reward-code-text').html, function(data) {
-            $.post('/sms?phone_number=2068833226&reward_code="parker4j4"', function(data) {
-                console.log("SMS Completed");
-            });
-        }
-    </script>
 
 </head>
 <body>
@@ -65,9 +39,6 @@
     <div id="main">
 
         <div class="game-overlay">
-
-            
-
             <div class="button-section">
                 <button class="spin-button">Spin</button>
                 <div class="spin-text">
@@ -80,7 +51,7 @@
         <div class="darkener"></div>
         
         <div class="prompt-container">
-            <!-- <div class="prompt-transparency-wrapper"> -->
+            <div class="prompt-transparency-wrapper">
                 <div class="prize-section">
                     <h1>50% Off</h1>
                 </div>
@@ -107,15 +78,14 @@
                             Text me the code
                             <span class="border-piece"></span>
                         </a>
-                        <form class="text-phone-form" onsubmit="sendSMS();return false">
-                            <input type="tel" id="phone" name="phone" class="phone-input" placeholder="1234567890"
-                                    pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
-                                    required>
-                            <button type="submit" class="submit-button">Send</button>
+                        <form class="text-phone-form" id="send-code-sms-form">
+                            <input type="tel" id="phone-number-input" name="phone" class="phone-input" placeholder="1231231234"
+                            required>
+                            <button type="button" class="submit-button">Send</button>
                         </form>
                     </div>
 
-                <!-- </div> -->
+                </div>
             </div>
         </div>
     </div>

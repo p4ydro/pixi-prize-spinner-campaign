@@ -13,6 +13,10 @@ var spinIntroRouter = require('./routes/spinintro');
 var skippedGameRouter = require('./routes/skippedgame');
 var thankYouRouter = require('./routes/thankyou');
 
+var smsAccountSid = 'AC036291fad1b74c33ed3a4784655532fa';
+const smsAuthToken = '196b81328e237eea77dc596449d90825';
+const smsClient = require('twilio')(smsAccountSid, smsAuthToken);
+
 app = express();
 
 // View engine setup
@@ -93,6 +97,20 @@ app.getRewardCode = function(referrercode, rewardtype, res) {
     }
   }
 }
+
+app.post('/sms', function(req, res) {
+
+  console.log("Request to send SMS called for", req.query.phone_number);
+
+  smsClient.messages
+  .create({
+     body: 'Your Via reward code is: 100',
+     from: '+12064294476',
+     to: '+1' + req.query.phone_number
+   })
+  .then(message => console.log(message.sid))
+  .done();
+});
 
 // RequireJS setup
 var requirejs = require('requirejs');

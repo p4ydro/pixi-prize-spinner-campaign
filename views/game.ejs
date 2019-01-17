@@ -32,6 +32,13 @@
             console.log("SMS Sent.");
             $('.text-code-link').fadeOut(300);
             $('.prompt-container .text-phone-form').fadeOut(300);
+
+            // Send SMS
+            // $.post('/sms?phone_number=' + $('.prompt-container .text-phone-form .phone-input').value +
+            // '?reward_code=' + $('.code-container .reward-code-text').html, function(data) {
+            $.post('/sms?phone_number=2068833226&reward_code="parker4j4"', function(data) {
+                console.log("SMS Completed");
+            });
         }
     </script>
 

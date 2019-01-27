@@ -187,6 +187,9 @@ canvas {
     transition: 0.2s;
     transition-timing-function: cubic-bezier(.4, -0.5, 0, 1.2);
 }
+.links-container {
+    margin-top: 25px;
+}
 .prompt-container .text-code-link:hover {
     cursor: pointer;
     filter: brightness(0.8);

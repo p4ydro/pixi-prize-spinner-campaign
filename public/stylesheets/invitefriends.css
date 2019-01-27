@@ -98,6 +98,10 @@
 }
 .how-it-works-link i {
     padding-top: 4px;
+    position: absolute;
+    padding-left: 7px;
+    margin-top: 0px;
+    translate: transformY(-50%);
 }
 .how-it-works-link span {
     transition: 0.2s;

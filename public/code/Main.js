@@ -104,7 +104,7 @@ require([
         }
       
           return "unknown";
-      }
+    }
  
     // Start game
     StartGame();

@@ -40,7 +40,9 @@ define([
 
     PrizeManager.openPrizePrompt = function(prizeType) {
         // Fill prompt with information
-        let prizeInfo = this.getPrizeInfo(prizeType);
+        var prizeInfo = this.getPrizeInfo(prizeType);
+        var prizeColor = this.findColorByPrizeType(prizeType);
+        $('.prize-section').css("background-color", prizeColor);
         $('.prize-section h1').html(prizeInfo.name);
         $('.description-section .prize-text').html(prizeInfo.description);
 
@@ -51,9 +53,9 @@ define([
     };
 
     PrizeManager.getPrizeInfo = function(prizeType) {
-        let prizeObj = {};
-        let d = "";
-        let n = "";
+        var prizeObj = {};
+        var d = "";
+        var n = "";
 
         // Find prize description based on prize type
         switch (prizeType) {
@@ -121,6 +123,34 @@ define([
 
         return result;
     };
+
+    PrizeManager.findColorByPrizeType = function(prizeType) {
+        var result = "#F28F32";
+
+        // Find reward code based on table provided by Via
+        switch (prizeType) {
+            case this.PrizeTypes.TenDollars:
+                result = "#25B5EE";
+            break;
+            case this.PrizeTypes.TwentyDollars:
+                result = "#D7461F";
+            break;
+            case this.PrizeTypes.ThirtyDollars:
+                result = "#FCD838";
+            break;
+            case this.PrizeTypes.TwoRides:
+                result = "#7A89E5";
+            break;
+            case this.PrizeTypes.FiftyPercent:
+                result = "#F28F32";
+            break;
+            case this.PrizeTypes.ViaPass:
+                result = "#005583";
+            break;
+        }
+
+        return result;
+    }
 
     getQueryStringParams = query => {
         return (function(a) {

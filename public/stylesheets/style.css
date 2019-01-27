@@ -11,8 +11,6 @@ body {
   text-align: center;
   padding: 0px;
   margin: 0px;
-  overflow-y: hidden;
-}
 
 #main {
   background-color: #46d5fa;
@@ -29,15 +27,15 @@ body {
 
 h1 {
   font-family: 'AccordExtraBold', sans-serif;
-  font-size: 30px;
+  font-size: 32px;
 }
 h2 {
   font-family: 'AccordThin', sans-serif;
-  font-size: 25px;
+  font-size: 27px;
 }
 p {
   font-family: 'AccordReg', sans-serif;
-  font-size: 20px;
+  font-size: 22px;
 }
 a:hover, a:hover>* {
   cursor: pointer !important;
@@ -48,7 +46,7 @@ button {
   padding: 10px 0px;
   margin: 10px 0px;
   border: none;
-  font-size: 20px;
+  font-size: 22px;
   border-radius: 5px;
   background-color: #1877b7;
   color: white;
@@ -81,16 +79,16 @@ button:focus {
     max-width: 100vw;
   }
   h1 {
-    font-size: 5vw;
+    font-size: 5.14vw;
   }
   h2 {
-    font-size: 4.5vw;
+    font-size: 4.64vw;
   }
   h3 {
-    font-size: 4vw;
+    font-size: 4.14vw;
   }
   button {
-    font-size: 3.75vw;
+    font-size: 3.89vw;
     margin: 1vh 0px;
   }
 }

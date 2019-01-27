@@ -83,3 +83,19 @@
 .confetti {
     width: 95%;
 }
+
+.bottom-half .tc-link-container {
+    text-align: center;
+    position: fixed;
+    left: 50%;
+    right: 50%;
+    bottom: 40px;
+    width: 100%;
+    transform: translateX(-50%);
+} 
+.bottom-half .tc-link-container a {
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+

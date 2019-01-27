@@ -36,6 +36,8 @@
 }
 .bottom-half .text-container h2 {
     padding: 0px 40px;
+    padding: 12px;
+    line-height: 135%;
 }
 .fade-in {
     animation: fade-in 2s;

@@ -9,11 +9,11 @@ body {
     background: none;
     background-color: transparent;
     z-index: 5;
+
 }
 .background-holder {
     position: absolute;
-    background-color: #1877b7;
-    background-image: url("../images/Game/Background.png");
+    background-color: #b6ecff;
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -23,6 +23,26 @@ body {
     left: 50%;
     transform: translateX(-50%);
     z-index: -99;
+    overflow-x: hidden;
+}
+.background-holder .background-bottom-piece {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    left: 0px;
+}
+.background-holder .background-top-overlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+}
+.background-holder .background-icons {
+    position: absolute;
+    top: -2%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 105%;
 }
 
 canvas {

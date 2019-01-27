@@ -5,12 +5,14 @@
 }
 
 body {
+  position: relative;
   background-color: #46a8fa;
   font-family: 'Accord', sans-serif;
   color: white;
   text-align: center;
   padding: 0px;
   margin: 0px;
+  overflow-y: hidden;
 }
 
 #main {

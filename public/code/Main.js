@@ -45,18 +45,17 @@ require([
             e.target.setCustomValidity("");
         });
 
+        // Force phone number format
+        $("#phone-number-input").on('input', function() {
+            $(this).val($(this).val().replace(/^(\d{3})(\d{3})(\d)+$/, "($1)$2-$3"));
+        });
+
         // Send SMS on click
         $('.text-phone-form .submit-button').click(function(e) {
-            var numberValidator = $('#send-code-sms-form')
-            numberValidator.validate({
-                rules: {
-                    required: true,
-                    phoneUS: true
-                }
-            });
-            if (numberValidator.valid()
-            && $.isNumeric($('#phone-number-input').val())
-            && $('#phone-number-input').val().length === 10) {
+            // Get clean phone number by replacing parentheses and dashes            
+            var cleanNumber = $("#phone-number-input").val().replace(/[^+\d]+/g, "");
+
+            if ($.isNumeric(cleanNumber) && cleanNumber.length === 10) {
                 sendSMS();
             } else {
                 if ($('#phone-number-input').val()) {

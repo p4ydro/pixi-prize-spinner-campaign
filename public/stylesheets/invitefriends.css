@@ -81,7 +81,7 @@
     position: relative;
     padding: 15px;
 }
-.button-container .share-button {
+.button-container button {
     width: 70%;
 }
 

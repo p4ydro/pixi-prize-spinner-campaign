@@ -17,14 +17,19 @@ function(Logger, GameManager, Spinner) {
             GameManager.GAME.GameScene.addChild(spinner.TickSprite);
 
             // Attach spinner button click
-            $('.spin-button').on('click', function() {
-                if (!spinner.spun) {
-                    spinner.spin();
-                    $(this).addClass("removed");
-                    $('.game-overlay .spin-text .seconds-text').css('opacity', '0');
-                    $('.game-overlay .spin-text .spinning-text').css('opacity', '1');
-                }
-            });
+            if (!localStorage.getItem('po')) {
+                $('.spin-button').on('click', function() {
+                    if (!spinner.spun && !$(this).hasClass("removed")) {
+                        spinner.spin();
+                        $(this).addClass("removed");
+                        $('.game-overlay .spin-text .seconds-text').css('opacity', '0');
+                        $('.game-overlay .spin-text .spinning-text').css('opacity', '1');
+                    }
+                });
+            } else {
+                $('.spin-button').remove();
+                $('.game-overlay .spin-text .seconds-text').css('opacity', '0');
+            }
         },
 
         update: function() {

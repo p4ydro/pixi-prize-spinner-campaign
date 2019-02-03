@@ -3,7 +3,8 @@ require([
     'Game',
     'Debug/Logger',
     'Images',
-], function(GameManager, Game, Logger, Images) {
+    'Managers/PrizeManager'
+], function(GameManager, Game, Logger, Images, PrizeManager) {
 
     var smsSent = false;
 
@@ -50,6 +51,11 @@ require([
             $(this).val($(this).val().replace(/^(\d{3})(\d{3})(\d)+$/, "($1)$2-$3"));
         });
 
+        // Check for previous completion
+        if (localStorage.getItem('po')) {
+            PrizeManager.collectPrize(true);
+        }
+
         // Send SMS on click
         $('.text-phone-form .submit-button').click(function(e) {
             // Get clean phone number by replacing parentheses and dashes            
@@ -66,6 +72,7 @@ require([
                 }
             }
         });
+
     };
 
     function sendSMS() {

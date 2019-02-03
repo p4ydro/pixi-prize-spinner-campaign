@@ -17,10 +17,39 @@ define([
         TwoRides: "2 Free Rides"
     };
 
-    PrizeManager.collectPrize = function() {
+    PrizeManager.collectPrize = function(previousPlay) {
         Logger.log("PrizeManager", this.foundPrizeType);
         
         var referrercode = getQueryStringParams()["referrer_code"];
+
+        // Check for previous play
+        if (!previousPlay) {
+            if (localStorage.getItem('po')) {
+                console.log("Player played before.");
+                previousPlay = true;
+            } else {
+                console.log("Player hasn't played before.");
+            }
+        }
+
+        // Assign any previous play
+        if (previousPlay) {
+            // Show old object
+            var previousPlayResults = JSON.parse(localStorage.getItem('po'));
+            // Code
+            if (previousPlayResults.cd) {
+                $(".code-container .reward-code-text").html(previousPlayResults.cd);
+            } else {
+                $(".code-container .reward-code-text").html("Error");
+            }
+            // Prompt style
+            if (previousPlayResults.pt) {
+                this.openPrizePrompt(PrizeManager.PrizeTypes[previousPlayResults.pt]);
+            }
+
+            return;
+        }
+
 
         // Make post request for the reward code
         $.post("/game/rewardcode", { rewardtype: this.foundPrizeIndex, referrercode: referrercode }, function(data) {
@@ -32,6 +61,15 @@ define([
                 downloadLink = $('.links-container .button-container a');
                 let newLink = downloadLink.attr("href") + data;
                 downloadLink.attr("href", newLink);
+
+                // Save this data to localStorage
+                var pobj = {
+                    pb: true,
+                    cd: data,
+                    pt: this.foundPrizeType
+                }
+                // store.setItem('po', JSON.stringify(pobj));
+                localStorage.setItem('po', JSON.stringify(pobj));
 
                 // Show prompt
                 this.openPrizePrompt(PrizeManager.PrizeTypes[this.foundPrizeType]);

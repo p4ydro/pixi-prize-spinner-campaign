@@ -166,9 +166,11 @@ canvas {
     color: #1fb7e9;
     text-align: center;
 }
-.prompt-container .description-section h1 {
-    padding: 20px 70px;
-    padding-top: 40px;
+.prompt-container .description-section .prize-text-content {
+    padding: 25px 70px 40px;
+}
+.prompt-container .description-section .prize-text-content h1 {
+    padding-bottom: 15px;
 }
 .prompt-container .description-section h2 {
     padding-bottom: 20px;

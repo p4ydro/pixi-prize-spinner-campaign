@@ -87,6 +87,15 @@ define([
         $('.prize-section h1').html(prizeInfo.name);
         $('.description-section .prize-text').html(prizeInfo.description);
 
+        // Hide secondary text if unecessary
+        if (prizeType !== this.PrizeTypes.TwoRides
+        && prizeType !== this.PrizeTypes.FiftyPercent) {
+            // Hide text
+            $('.prompt-container .description-section .secondary-prize-text').remove();
+            // Decrease padding on text box as it's now empty space
+            $('.prompt-container .description-section .prize-text-content').css('padding-bottom', '20px');
+        }
+
         // Show darkener
         $('.darkener').addClass('shown');
         // Show prompt

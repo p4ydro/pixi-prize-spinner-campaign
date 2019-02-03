@@ -91,16 +91,16 @@
     cursor: pointer;
 }
 .how-it-works-link i {
-    padding-top: 4px;
-    position: absolute;
     padding-left: 7px;
-    margin-top: 0px;
-    translate: transformY(-50%);
+
 }
 .how-it-works-link span {
+    position: relative;
+    bottom: 2px;
     transition: 0.2s;
     margin-right: 0px;
     transition-timing-function: cubic-bezier(.4, -0.5, 0, 1.2);
+    
 }
 .how-it-works-link:hover span {
     margin-right: 5px;

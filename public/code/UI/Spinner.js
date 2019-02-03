@@ -12,17 +12,19 @@ define([
 
     Spinner.prototype = {
         init: function() {
-            this.spun = false;
+            this.State = {
+                Start: 0,
+                Spinning: 1,
+                Stopped: 2
+            }
+
+            this.currentState = this.State.Start;
             this.rotationSpeed = 0;
-            this.maximumRotationSpeed = 0.5;
             this.finalTargetDegrees = 0;
-            this.stopTime = 2;
-            this.stopped = false;
-            this.prizeLocked = false;
+            this.totalSpins = 5;
             this.InnerSprite = new PIXI.Sprite(PIXI.loader.resources[Images.SpinnerInner].texture);
             this.BackSprite = new PIXI.Sprite(PIXI.loader.resources[Images.SpinnerBack].texture);
             this.TickSprite = new PIXI.Sprite(PIXI.loader.resources[Images.SpinnerTick].texture);
-            let p = PrizeManager.PrizeTypes;
             this.spinResults = Object.keys(PrizeManager.PrizeTypes);
 
             this.Sprites = [
@@ -31,78 +33,52 @@ define([
         },
 
         update: function() {
-            // Spinning functionality
-            if (this.spun) {
-                // Easing into full speed
-                if (this.stopTime > 0) {
-                    this.rotationSpeed += (this.maximumRotationSpeed - this.rotationSpeed) / 20;
-                    this.stopTime -= 0.05;
-                } else if (this.rotationSpeed < 0.001) {
-                    this.rotationSpeed = 0;
-                    if (!this.stopped) {
+            // console.log(this.InnerSprite.rotation);
+            switch (this.currentState) {
+                case this.State.Start:
+                break;
+                case this.State.Spinning:
+                    var innerDeg = radiansToDegrees(this.InnerSprite.rotation);
+                    // Spin to target
+                    if (innerDeg < this.finalTargetDegrees) {
+                        // Ease rotation speed
+                        if (innerDeg < 180) {
+                            if (this.rotationSpeed < 15) {
+                                this.rotationSpeed += 1;
+                            }
+                        } else if (innerDeg > (this.finalTargetDegrees - 720)) {
+                            if (this.rotationSpeed > 0.5) {
+                                this.rotationSpeed -= 0.155;
+                            }
+                        }
+                        // Add rotation speed
+                        this.InnerSprite.rotation += degreesToRadians(this.rotationSpeed);
+                    } else {
+                        // Stop
                         this.stop();
                     }
-                } else {
-                    this.rotationSpeed += (0 - this.rotationSpeed) / 50;
-                }
-
-                // Applying rotation
-                this.InnerSprite.rotation += this.rotationSpeed;
-
-                // Stopped easing into target rotation
-                if (this.stopped && !this.prizeLocked) {
-                    // Get current degrees
-                    let currentRotation = radiansToDegrees(this.InnerSprite.rotation);
-
-                    // Ease
-                    let diff = this.finalTargetDegrees - currentRotation;
-                    let newRotation = (diff) / 5;
-
-                    if (Math.abs(diff) < 0.05) {
-                        this.prizeFound();
-                    }
-
-                    // Apply new rotation
-                    this.InnerSprite.rotation += degreesToRadians(newRotation);
-                }
+                break;
+                case this.State.Stopped:
+                break;
             }
         },
 
         spin: function() {
-            this.spun = true;
-            this.rotationSpeed = -0.2;
-            this.maximumRotationSpeed = 0.5 + (Math.random());
+            var foundPrizeInt = PrizeManager.getRandomPrizeValue() + 1;
+            var targetDeg = 60 * (foundPrizeInt - 1);
+            this.finalTargetDegrees = (360 * this.totalSpins) + targetDeg;
+            
+            this.currentState = this.State.Spinning;
         },
 
         stop: function() {
-            this.stopped = true;
+            this.currentState = this.State.Stopped;
 
-            // Find target degrees
-            let currentDegrees = radiansToDegrees(this.InnerSprite.rotation);
-            let newDeg = currentDegrees - (currentDegrees % 60);
-            // Check for left or right lock
-            let difference = currentDegrees - newDeg;
-            if (difference > 30) {
-                newDeg = currentDegrees + (60 - difference);
-            }
-            // Apply new target degrees
-            this.finalTargetDegrees = newDeg;
+            // Collect prize with PrizeManager
+            PrizeManager.collectPrize();
 
             // Hide spinning text
             $('.game-overlay .spin-text .spinning-text').css('opacity', '0');
-        },
-
-        prizeFound: function() {
-            this.prizeLocked = true;
-
-            // Find prize based on rotation]
-            let currentFloorDegrees = this.finalTargetDegrees % 360;
-            let index = (currentFloorDegrees / 60);
-            let prize = (this.spinResults[index]);
-            let prizeVal = PrizeManager.PrizeTypes[prize];
-
-            // Collect prize with PrizeManager
-            PrizeManager.collectPrize(prizeVal);
         },
 
         resize: function() {

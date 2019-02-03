@@ -4,6 +4,10 @@ define([
 
     var PrizeManager = function() {};
 
+    PrizeManager.foundPrizeIndex;
+    PrizeManager.foundPrizeType;
+    PrizeManager.foundPrizeObject;
+
     PrizeManager.PrizeTypes = {
         TenDollars: "$10",
         FiftyPercent: "50% Off",
@@ -13,14 +17,13 @@ define([
         TwoRides: "2 Free Rides"
     };
 
-    PrizeManager.collectPrize = function(prizeType) {
-        Logger.log("PrizeManager", prizeType);
+    PrizeManager.collectPrize = function() {
+        Logger.log("PrizeManager", this.foundPrizeType);
         
-        var prizeIndex = this.findRewardTypeByPrizeType(prizeType);
         var referrercode = getQueryStringParams()["referrer_code"];
 
         // Make post request for the reward code
-        $.post("/game/rewardcode", { rewardtype: prizeIndex, referrercode: referrercode }, function(data) {
+        $.post("/game/rewardcode", { rewardtype: this.foundPrizeIndex, referrercode: referrercode }, function(data) {
             // Check if we received a reward code back
             if (data) {
                 // If we received a reward code, show it in the prompt
@@ -31,7 +34,7 @@ define([
                 downloadLink.attr("href", newLink);
 
                 // Show prompt
-                this.openPrizePrompt(prizeType);
+                this.openPrizePrompt(PrizeManager.PrizeTypes[this.foundPrizeType]);
             } else {
                 console.error("Reward code not found.", data);
             }
@@ -147,10 +150,28 @@ define([
             case this.PrizeTypes.ViaPass:
                 result = "#005583";
             break;
+            default:
+                result = "#F28F32";
+            break;
         }
 
         return result;
-    }
+    };
+
+    PrizeManager.getRandomPrizeValue = function() {
+        // Get a random prize value for prize queryings
+        var intPrizeValue = Math.floor(Math.random() * 6);
+        var prizeInts = Object.keys(PrizeManager.PrizeTypes);
+        var fullPrizeValue = prizeInts[intPrizeValue];
+        console.log("INT: " + intPrizeValue);
+        console.log("VALUE: " + fullPrizeValue);
+
+        this.foundPrizeType = fullPrizeValue;
+        this.foundPrizeObject = PrizeManager.PrizeTypes[this.foundPrizeType];
+        this.foundPrizeIndex = this.findRewardTypeByPrizeType(this.foundPrizeObject);
+
+        return intPrizeValue;
+    };
 
     getQueryStringParams = query => {
         return (function(a) {

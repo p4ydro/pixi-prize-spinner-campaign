@@ -20,8 +20,7 @@
     "reqclient": "^2.4.0",
     "request": "^2.88.0",
     "requirejs": "^2.3.6",
-    "twilio": "^3.27.1",
-    "uuid": "^3.3.2"
+    "twilio": "^3.27.1"
   },
   "devDependencies": {
     "body-parser": "^1.18.3"

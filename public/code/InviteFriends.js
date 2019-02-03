@@ -1,7 +1,7 @@
 $(document).ready(function() {
     // Position how-it-works
     var hiwc = $('.how-it-works-container');
-    hiwc.offset({ top: (window.innerHeight - hiwc.height() - 20), left: 0 });
+    hiwc.offset({ top: (window.innerHeight - hiwc.height() - 20) });
 });
 
 function shareButtonClick(intent, inviteLink) {

@@ -141,12 +141,26 @@ canvas {
     opacity: 1;
 }
 .prompt-container .prize-section {
+    position: relative;
     font-family: "AccordBold", sans-serif;
     background-color: #f28f32;
     padding: 80px 0px;
+    overflow-y: hidden;
 }
 .prompt-container .prize-section h1 {
+    position: relative;
     font-size: 62px;
+    z-index: 999;
+}
+.prompt-container .prize-title-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 97%;
+    height: 97%;
+    background-image: url("../images/Game/Stars.png");
+    background-size: contain;
 }
 .prompt-container .description-section {
     color: #1fb7e9;

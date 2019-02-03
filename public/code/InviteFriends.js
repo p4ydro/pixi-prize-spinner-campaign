@@ -1,7 +1,9 @@
 $(document).ready(function() {
-    // Position how-it-works
-    var hiwc = $('.how-it-works-container');
-    hiwc.offset({ top: (window.innerHeight - hiwc.height() - 20) });
+    positionHowItWorksContainer();
+});
+
+$(window).resize(function() {
+    positionHowItWorksContainer();
 });
 
 function shareButtonClick(intent, inviteLink) {
@@ -36,4 +38,9 @@ function hideHowItWorksPrompt() {
 
 function enterThankYouPage() {
     window.location.href = "thankyou";
+}
+
+function positionHowItWorksContainer() {
+    var hiwc = $('.how-it-works-container');
+    hiwc.offset({ top: (window.innerHeight - hiwc.height() - 20) });
 }

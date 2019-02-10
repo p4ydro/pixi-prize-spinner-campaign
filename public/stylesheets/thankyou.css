@@ -19,7 +19,7 @@
     width: 100%;;
     position: absolute;
     bottom: 0px;
-    top: 45%;
+    top: 37%;
 }
 .bottom-half .text-container {
     position: absolute;
@@ -84,7 +84,7 @@
     width: 95%;
 }
 
-.bottom-half .tc-link-container {
+.tc-link-container {
     text-align: center;
     position: fixed;
     left: 50%;
@@ -93,7 +93,7 @@
     width: 100%;
     transform: translateX(-50%);
 } 
-.bottom-half .tc-link-container a {
+.tc-link-container a {
     text-decoration: none;
     color: white;
     transition: 0.3s;

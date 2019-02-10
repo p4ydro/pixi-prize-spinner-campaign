@@ -68,7 +68,7 @@ canvas {
 }
 .game-overlay .button-section {
     position: absolute;
-    bottom: 15vh;
+    bottom: 24vh;
     width: 100%;
     text-align: center;
 }

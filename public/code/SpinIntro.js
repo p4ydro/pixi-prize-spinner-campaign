@@ -1,3 +1,11 @@
+$(document).ready(function() {
+    positionSureThingContainer();
+});
+
+$(window).resize(function() {
+    positionSureThingContainer();
+});
+
 $('#skip-spin-button').click(function(e) {
     // Open download link based on respective OS
     switch (getMobileOperatingSystem()) {
@@ -27,4 +35,9 @@ function getMobileOperatingSystem() {
     }
   
       return "unknown";
-  }
+}
+
+function positionSureThingContainer() {
+    var stc = $('.text-container');
+    stc.offset({ top: (window.innerHeight - stc.height() - 60) });
+}

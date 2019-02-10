@@ -1,3 +1,9 @@
+.content-container {
+    position: absolute;
+    top: 2.5%;
+    left: 50%;
+    transform: translateX(-50%);
+}
 .logo-container {
     position: relative;
     width: 40%;

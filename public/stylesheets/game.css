@@ -118,7 +118,7 @@ canvas {
     width: 90vw;
     max-width: calc(100vh / 2);
     left: 50%;
-    top: 50%;
+    top: 51.5%;
     transform: translate(-50%, -50%);
     background-color: white;
     padding-bottom: 40px;
@@ -131,7 +131,7 @@ canvas {
 }
 .prompt-container.active {
     opacity: 1;
-    margin-top: 0px;
+    margin-top: -10px;
 }
 .prompt-container .prompt-transparency-wrapper {
     opacity: 0;
@@ -171,6 +171,7 @@ canvas {
 }
 .prompt-container .description-section .prize-text-content h1 {
     padding-bottom: 15px;
+    font-size: 45px
 }
 .prompt-container .description-section h2 {
     padding-bottom: 20px;

@@ -1,17 +1,17 @@
 $(document).ready(function() {
     positionHowItWorksContainer();
 
-    // Position how-it-works prompt-container for iOS
+    // How-It-Works prompt centering for iOS WebKit based browsers
     // Get users UserAgent for OS & Browser identification
     var ua = window.navigator.userAgent;
-    // Using the acquired UserAgent, 
+    // Using the acquired UserAgent, check if the user is on an iOS device (iPhone, iPad)
     var iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
     // Check if WebKit is being used (the rendering engine for Safari or Chrome)
     var webkit = !!ua.match(/WebKit/i);
     // Check if on iOS with webkit (Chrome or Safari)
     var iOSWebKit = iOS && webkit;
 
-    // If we're in safari, position the prompt container
+    // If we're in an iOS WebKit browser, position the prompt container
     if (iOSWebKit) {
         // Get the "client height" of the document's inner documentElement ("client height" is height without toolbars/actionbars)
         var clientHeight = document.documentElement.clientHeight;

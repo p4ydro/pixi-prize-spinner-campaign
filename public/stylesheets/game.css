@@ -320,6 +320,7 @@ canvas {
     .prompt-container .description-section h2 {
         padding-top: 1.5vh;
         padding-bottom: 1vh;
+        font-size: 7vw;
     }
     .prompt-container .code-container {
         width: 80%;

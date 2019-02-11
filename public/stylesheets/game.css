@@ -309,7 +309,8 @@ canvas {
     }
     .prompt-container .description-section .prize-text-content h1 {
         padding-bottom: 7.5px;
-        font-size: 6vh;
+        z-index: 999;
+        color: #1fb7e9;
     }
     .prompt-container .description-section .secondary-prize-text {
         font-size: 5vw;

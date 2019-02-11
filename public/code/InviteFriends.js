@@ -1,5 +1,30 @@
 $(document).ready(function() {
     positionHowItWorksContainer();
+
+    // Position how-it-works prompt-container for iOS
+    // Get users UserAgent for OS & Browser identification
+    var ua = window.navigator.userAgent;
+    // Using the acquired UserAgent, 
+    var iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
+    // Check if WebKit is being used (the rendering engine for Safari or Chrome)
+    var webkit = !!ua.match(/WebKit/i);
+    // Check if on iOS with webkit (Chrome or Safari)
+    var iOSWebKit = iOS && webkit;
+
+    // If we're in safari, position the prompt container
+    if (iOSWebKit) {
+        // Get the "client height" of the document's inner documentElement ("client height" is height without toolbars/actionbars)
+        var clientHeight = document.documentElement.clientHeight;
+
+        // Use JQuery to set CSS for prompt container
+        $('.prompt-container').css({
+            // Set top value of prompt container to half of the acquired "client height"
+            //// Note that in CSS, '.prompt-container' has a "transform: translate(-50%, -50%"), making its origin in the center
+            "top": (clientHeight / 2)
+        });
+    }
+
+    $('.how-it-works-container .how-it-works-link').css('opacity', '1');
 });
 
 $(window).resize(function() {

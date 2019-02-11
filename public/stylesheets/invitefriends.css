@@ -79,12 +79,13 @@
 
 .button-container {
     position: relative;
-    padding: 15px;
 }
 .button-container button {
     width: 70%;
 }
 .how-it-works-container .how-it-works-link {
+    transition: 1s;
+    opacity: 0;
     font-size: 27px;
 }
 .how-it-works-container .how-it-works-link:hover {
@@ -129,19 +130,18 @@
     width: 90vw;
     max-width: calc(100vh / 2);
     left: 50%;
-    top: 50%;
+    top: -200%;
     transform: translate(-50%, -50%);
     background-color: white;
     padding: 40px 0px;
-    margin-top: -100vh;
     transition: 0.5s;
-    transition-timing-function: cubic-bezier(.4, -0.5, 0, 1.2);
     color: #25b5ee;
     border-radius: 15px;
 }
 .prompt-container.active {
     opacity: 1;
-    margin-top: 0px;
+    left: 50%;
+    top: 50%;
 }
 .prompt-container .prompt-transparency-wrapper {
     opacity: 0;
@@ -219,9 +219,6 @@
     }
     .prompt-container {
         padding: 3.3vh 0px;
-    }
-    .prompt-container .icon-container {
-        margin-bottom: -1vh;
     }
     .button-container {
         margin-bottom: -1vh;

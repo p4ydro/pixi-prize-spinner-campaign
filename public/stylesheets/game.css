@@ -141,6 +141,10 @@ canvas {
     opacity: 1;
 }
 .prompt-container .prize-section {
+    width: 120%;
+    /* height: 20%; */
+    top: -2px;
+    left: -10%;
     position: relative;
     font-family: "AccordBold", sans-serif;
     background-color: #f28f32;
@@ -149,7 +153,6 @@ canvas {
 }
 .prompt-container .prize-section h1 {
     position: relative;
-    /* font-size: 62px; */
     font-size: 5vh;
     z-index: 999;
 }

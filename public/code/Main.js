@@ -21,6 +21,18 @@ require([
                 GameManager.GAME.initGame();
             });
 
+        // Prize prompt centering for iOS WebKit based browsers
+        var ua = window.navigator.userAgent;
+        var iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
+        var webkit = !!ua.match(/WebKit/i);
+        var iOSWebKit = iOS && webkit;
+        if (iOSWebKit) {
+            var clientHeight = document.documentElement.clientHeight;
+            $('.prompt-container').css({
+                "top": (clientHeight / 2)
+            });
+        }
+
         // Set up download button
         $('.download-button').click(function(e) {
             console.log("Download button clicked");

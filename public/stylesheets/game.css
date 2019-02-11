@@ -144,12 +144,13 @@ canvas {
     position: relative;
     font-family: "AccordBold", sans-serif;
     background-color: #f28f32;
-    padding: 80px 0px;
+    padding: 9vh 0px;
     overflow-y: hidden;
 }
 .prompt-container .prize-section h1 {
     position: relative;
-    font-size: 62px;
+    /* font-size: 62px; */
+    font-size: 5vh;
     z-index: 999;
 }
 .prompt-container .prize-title-background {
@@ -167,11 +168,11 @@ canvas {
     text-align: center;
 }
 .prompt-container .description-section .prize-text-content {
-    padding: 25px 70px 40px;
+    padding: 25px 3vh 40px;
 }
 .prompt-container .description-section .prize-text-content h1 {
     padding-bottom: 15px;
-    font-size: 45px
+    font-size: 45px;
 }
 .prompt-container .description-section h2 {
     padding-bottom: 20px;
@@ -204,7 +205,7 @@ canvas {
     transition: 0.2s;
     transition-timing-function: cubic-bezier(.4, -0.5, 0, 1.2);
 }
-.links-container {
+.prompt-container .links-container {
     margin-top: 25px;
 }
 .prompt-container .text-code-link:hover {
@@ -292,16 +293,30 @@ canvas {
     .game-overlay .spin-button {
         width: 70%;
         font-size: 5.14vw;
-        margin-bottom: 7vw;
+        margin-bottom: 1vh;
     }
     .prompt-container {
         padding-bottom: 5vw;
     }
     .prompt-container .prize-section {
-        padding: 60px 0px;
+        padding: 8vh 0px;
     }
     .prompt-container .prize-section h1 {
         font-size: 8.14vw;
+    }
+    .prompt-container .description-section .prize-text-content {
+        padding-bottom: 1vh;
+    }
+    .prompt-container .description-section .prize-text-content h1 {
+        padding-bottom: 7.5px;
+        font-size: 6vh;
+    }
+    .prompt-container .description-section .secondary-prize-text {
+        font-size: 5vw;
+    }
+    .prompt-container .description-section h2 {
+        padding-top: 1.5vh;
+        padding-bottom: 1vh;
     }
     .prompt-container .code-container {
         width: 80%;
@@ -311,11 +326,14 @@ canvas {
     .prompt-container .code-container h1 {
         padding: 0px 3vw;
     }
+    .prompt-container .links-container {
+        margin-top: 0px;
+    }
     .prompt-container .download-button {
         padding: 2vw 4vw;
         width: 80%;
         margin: 5vw 0px;
-        font-size: 5.14vw;
+        font-size: 4.5vw;
     }
     .prompt-container .text-code-link {
         font-size: 4.14vw;

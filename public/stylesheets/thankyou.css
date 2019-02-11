@@ -12,8 +12,6 @@
     position: relative;
 
 }
-
-
 .bottom-half {
     height: 50%;
     width: 100%;;
@@ -85,6 +83,7 @@
 }
 
 .tc-link-container {
+    opacity: 0;
     text-align: center;
     position: fixed;
     left: 50%;
@@ -92,6 +91,7 @@
     bottom: 40px;
     width: 100%;
     transform: translateX(-50%);
+    transition: 0.5s;
 } 
 .tc-link-container a {
     text-decoration: none;

@@ -204,9 +204,7 @@
     width: 100%;
     height: auto;
     position: absolute;
-    /* top: 45%; */
     transform: translateY(-50%);
-    /* left: 0px; */
 }
 .prompt-container .info-container .info-row p {
     position: relative;
@@ -215,7 +213,7 @@
     height: 100%;
     text-align: left;
     margin-left: 15%;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 @media (orientation: portrait) {

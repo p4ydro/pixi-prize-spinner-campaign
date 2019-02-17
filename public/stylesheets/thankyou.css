@@ -14,7 +14,7 @@
 }
 .bottom-half {
     height: 50%;
-    width: 100%;;
+    width: 100%;
     position: absolute;
     bottom: 0px;
     top: 37%;
@@ -30,7 +30,7 @@
     margin: 30px 0px;
 }
 .bottom-half .text-container h1 {
-    margin: 30px 0px;
+    margin: 2vh 0px;
 }
 .bottom-half .text-container h2 {
     padding: 0px 40px;

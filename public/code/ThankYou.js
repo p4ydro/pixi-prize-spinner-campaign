@@ -16,9 +16,7 @@ function positionTermsContainer() {
     var dft = $(".dont-forget-text");
     var dftBottom = dft.offset().top + dft.height();
 
-    $('.text-container h1').html('Y: ' + window.innerHeight);
-
-    if (window.innerHeight < 500) {
+    if (window.innerHeight < 500 && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
         console.log("Overlap");
         // Position between DFT and bottom
         var dftBottom = dft.offset().top + dft.height();

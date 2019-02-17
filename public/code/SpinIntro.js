@@ -39,6 +39,8 @@ function getMobileOperatingSystem() {
 
 function positionSureThingContainer() {
     var stc = $('.text-container');
-    stc.offset({ top: (window.innerHeight - stc.height() - 60) });
+    var windowHeight = document.documentElement.clientHeight;
+    var spacing = windowHeight * 0.03;
+    stc.offset({ top: (windowHeight - stc.height()) - spacing })
     stc.css('opacity', '1');
 }

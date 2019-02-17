@@ -9,32 +9,33 @@
 .bounce {
     animation: bounce 2s infinite;
   }
-  @keyframes bounce {
+@keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
-      transform: translateY(0);
+        transform: translateY(0);
     }
     40% {
-      transform: translateY(-30px);
+        transform: translateY(-30px);
     }
     60% {
-      transform: translateY(-15px);
+        transform: translateY(-15px);
     }
-  }
-  .bounce-2 {
+}
+.bounce-2 {
     animation: bounce 2s infinite;
     animation-delay: 1s;
-  }
-  @keyframes bounce {
+}
+@keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
-      transform: translateY(0);
+        transform: translateY(0);
     }
     40% {
-      transform: translateY(-30px);
+        transform: translateY(-30px);
     }
     60% {
-      transform: translateY(-15px);
+        transform: translateY(-15px);
     }
-  }
+}
+
 .icon-container {
     position: absolute;
     width: 80%;
@@ -179,10 +180,19 @@
     left: 0px;
     padding: 0px;
     margin: 0px;
+    overflow: visible;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("../images/InviteYourFriends/ListNumCircle.png");
 }
 .prompt-container .info-container .bullet h2 {
+    font-family: AccordBold;
     position: absolute;
     margin: 0px;
+    margin-top: 5%;
+    margin-left: 2%;
+    width: 100%;
     padding: 0px;
     top: 50%;
     left: 50%;
@@ -194,9 +204,9 @@
     width: 100%;
     height: auto;
     position: absolute;
-    top: 45%;
+    /* top: 45%; */
     transform: translateY(-50%);
-    left: 0px;
+    /* left: 0px; */
 }
 .prompt-container .info-container .info-row p {
     position: relative;

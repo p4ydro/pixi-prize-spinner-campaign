@@ -234,8 +234,8 @@ canvas {
 }
 .prompt-container .text-phone-form {
     display: none;
-    /* position: absolute; */
     width: 100%;
+    margin-top: 1.5vh;
 }
 .prompt-container .text-phone-form .phone-input {
     height: 40px;

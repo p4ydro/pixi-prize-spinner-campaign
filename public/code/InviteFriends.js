@@ -92,7 +92,9 @@ function positionBottomHalf() {
         bc.css({ 
             "position": "fixed",
             "top": "57vh",
-            "transform": "translateY(-50%)"
+            "left": "50%",
+            "width": "100%",
+            "transform": "translate(-50%, -50%)"
          })
     }
 }

@@ -1,5 +1,6 @@
 $(document).ready(function() {
     positionHowItWorksContainer();
+    positionBottomHalf();
 
     // How-It-Works prompt centering for iOS WebKit based browsers
     // Get users UserAgent for OS & Browser identification
@@ -29,6 +30,7 @@ $(document).ready(function() {
 
 $(window).resize(function() {
     positionHowItWorksContainer();
+    positionBottomHalf();
 });
 
 function shareButtonClick(intent, inviteLink) {
@@ -67,5 +69,30 @@ function enterThankYouPage() {
 
 function positionHowItWorksContainer() {
     var hiwc = $('.how-it-works-container');
-    hiwc.offset({ top: (window.innerHeight - hiwc.height() - 20) });
+
+    // Get fb button
+    var fbButton = $('#fb-button');
+    var fbBottomY = fbButton.offset().top;
+    fbBottomY += fbButton.height();
+    // Position fb button centered between button and bottom
+    var centeredY = fbBottomY + ((window.innerHeight - fbBottomY) / 2);
+    hiwc.offset({ top: centeredY - (hiwc.height() / 2) });
+}
+
+function positionBottomHalf() {
+    var bc = $('#bottom-half-content');
+    var hiwc = $('.how-it-works-container');
+    
+    var bcBottom = bc.offset().top + bc.height();
+    var hiwcTop = hiwc.offset().top;
+    var spacing = window.innerHeight * 0.02;
+    if (bcBottom > hiwcTop) {
+        var newHiwcTop = window.innerHeight - hiwc.height() - spacing;
+        hiwc.offset({ top: newHiwcTop });
+        bc.css({ 
+            "position": "fixed",
+            "top": "57vh",
+            "transform": "translateY(-50%)"
+         })
+    }
 }

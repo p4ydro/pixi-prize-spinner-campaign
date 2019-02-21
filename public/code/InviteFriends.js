@@ -56,11 +56,13 @@ function shareButtonClick(intent, inviteLink) {
 function showHowItWorksPrompt() {
     $('.darkener').addClass('shown');
     $('.prompt-container').addClass('active');
+    $('.prompt-container').fadeIn(500);
 }
 
 function hideHowItWorksPrompt() {
     $('.darkener').removeClass('shown');
     $('.prompt-container').removeClass('active');
+    $('.prompt-container').fadeOut(500);
 }
 
 function enterThankYouPage() {

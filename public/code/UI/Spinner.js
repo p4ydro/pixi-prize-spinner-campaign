@@ -33,7 +33,6 @@ define([
         },
 
         update: function() {
-            // console.log(this.InnerSprite.rotation);
             switch (this.currentState) {
                 case this.State.Start:
                 break;

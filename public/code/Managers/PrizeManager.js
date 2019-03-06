@@ -25,10 +25,10 @@ define([
         // Check for previous play
         if (!previousPlay) {
             if (localStorage.getItem('po')) {
-                console.log("Player played before.");
+                Logger.log("Player played before.");
                 previousPlay = true;
             } else {
-                console.log("Player hasn't played before.");
+                Logger.log("Player hasn't played before.");
             }
         }
 
@@ -206,14 +206,25 @@ define([
     };
 
     PrizeManager.getRandomPrizeValue = function() {
-        // Get a random prize value for prize queryings
-        var intPrizeValue = Math.floor(Math.random() * 6);
+        var randomPrizePercent = Math.floor(Math.random() * 100) + 1;
         var prizeInts = Object.keys(PrizeManager.PrizeTypes);
-        var fullPrizeValue = prizeInts[intPrizeValue];
-        console.log("INT: " + intPrizeValue);
-        console.log("VALUE: " + fullPrizeValue);
+        var intPrizeValue = 0;
 
-        this.foundPrizeType = fullPrizeValue;
+        if (randomPrizePercent < 50) {
+            intPrizeValue = 0;
+        } else if (randomPrizePercent < 70) {
+            intPrizeValue = 3;
+        } else if (randomPrizePercent < 80) {
+            intPrizeValue = 4;
+        } else if (randomPrizePercent < 95) {
+            intPrizeValue = 5;
+        } else if (randomPrizePercent < 98) {
+            intPrizeValue = 1;
+        } else if (randomPrizePercent > 98) {
+            intPrizeValue = 2;
+        }
+
+        this.foundPrizeType = prizeInts[intPrizeValue];
         this.foundPrizeObject = PrizeManager.PrizeTypes[this.foundPrizeType];
         this.foundPrizeIndex = this.findRewardTypeByPrizeType(this.foundPrizeObject);
 

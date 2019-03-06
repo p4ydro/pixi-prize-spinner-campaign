@@ -313,6 +313,17 @@ canvas {
         padding-bottom: 7.5px;
         z-index: 999;
         color: #1fb7e9;
+        background-blend-mode: multiply;
+        -webkit-text-fill-color: #1fb7e9;
+    }
+    .prompt-container .description-section .prize-text-content h1::after {
+        content: "";
+        /* position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: red; */
     }
     .prompt-container .description-section .secondary-prize-text {
         font-size: 4.2vw;

@@ -212,11 +212,11 @@ canvas {
 }
 .prompt-container .text-code-link:hover {
     cursor: pointer;
-    filter: brightness(0.8);
+    /* filter: brightness(0.8); */
 }
 .prompt-container .text-code-link:active {
     transform: scale(0.95);
-    filter: brightness(0.75);
+    /* filter: brightness(0.75); */
 }
 .prompt-container .text-code-link .border-piece {
     position: absolute;
@@ -312,18 +312,23 @@ canvas {
     .prompt-container .description-section .prize-text-content h1 {
         padding-bottom: 7.5px;
         z-index: 999;
-        color: #1fb7e9;
         background-blend-mode: multiply;
-        -webkit-text-fill-color: #1fb7e9;
+        background: #1fb7e9 repeat-y;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-backface-visibility: hidden;
+        border: 2px solid white;
     }
-    .prompt-container .description-section .prize-text-content h1::after {
+    .prompt-container .description-section .prize-text-content h1::before {
         content: "";
-        /* position: absolute;
+        position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: red; */
+        background: white;
+        z-index: -2;
     }
     .prompt-container .description-section .secondary-prize-text {
         font-size: 4.2vw;

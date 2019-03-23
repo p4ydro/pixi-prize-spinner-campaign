@@ -214,18 +214,24 @@ define([
         var prizeInts = Object.keys(PrizeManager.PrizeTypes);
         var intPrizeValue = 0;
 
-        if (randomPrizePercent < 50) {
-            intPrizeValue = 0;
-        } else if (randomPrizePercent < 70) {
+        if (randomPrizePercent < 40) {
+            // $20
             intPrizeValue = 3;
-        } else if (randomPrizePercent < 80) {
+        } else if (randomPrizePercent < 54) {
+            // $30
             intPrizeValue = 4;
-        } else if (randomPrizePercent < 95) {
+        } else if (randomPrizePercent < 69) {
+            // 2FREE
             intPrizeValue = 5;
-        } else if (randomPrizePercent < 98) {
+        } else if (randomPrizePercent < 79) {
+            // 5RIDES
             intPrizeValue = 1;
-        } else if (randomPrizePercent > 98) {
+        } else if (randomPrizePercent < 80) {
+            // VIAPASS
             intPrizeValue = 2;
+        } else if (randomPrizePercent < 100) {
+            // $25
+            intPrizeValue = 0;
         }
 
         this.foundPrizeType = prizeInts[intPrizeValue];

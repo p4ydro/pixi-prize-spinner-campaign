@@ -113,31 +113,24 @@ canvas {
 }
 
 .prompt-container {
+    pointer-events: none;
     opacity: 0;
     position: absolute;
     width: 90vw;
     max-width: calc(100vh / 2);
     left: 50%;
-    top: 51.5%;
+    top: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
     padding-bottom: 40px;
     border-radius: 15px;
     overflow: hidden;
-    margin-top: -100vh;
     transition: 0.5s;
     transition-timing-function: cubic-bezier(.4, -0.5, 0, 1.2);
     z-index: 999;
 }
 .prompt-container.active {
-    opacity: 1;
-    margin-top: -10px;
-}
-.prompt-container .prompt-transparency-wrapper {
-    opacity: 0;
-    transition: 2s;
-}
-.prompt-container.active .prompt-transparency-wrapper {
+    pointer-events: all;
     opacity: 1;
 }
 .prompt-container .prize-section {
@@ -173,6 +166,7 @@ canvas {
     padding: 25px 3vh 40px;
 }
 .prompt-container .description-section .prize-text-content h1 {
+    color: #1fb7e9;
     padding-bottom: 15px;
     font-size: 45px;
 }
@@ -306,17 +300,27 @@ canvas {
     }
     .prompt-container .description-section .prize-text-content {
         padding-bottom: 1vh;
+        background-color: white;
+    }
+    .prompt-container .description-section .prize-text-content h1::after {
+        content: "";
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
     }
     .prompt-container .description-section .prize-text-content h1 {
         padding-bottom: 7.5px;
         z-index: 999;
         background-blend-mode: multiply;
-        background: #1fb7e9 repeat-y;
+        background-image: url("../images/Game/TextBackground.png");
+        background-size: cover;
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
         -webkit-backface-visibility: hidden;
-        border: 2px solid white;
+
     }
     .prompt-container .description-section .prize-text-content h1::before {
         content: "";

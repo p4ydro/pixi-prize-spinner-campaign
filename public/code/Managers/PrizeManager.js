@@ -73,7 +73,7 @@ define([
                     pt: this.foundPrizeType
                 }
 
-                localStorage.setItem('po', JSON.stringify(pobj));
+                // localStorage.setItem('po', JSON.stringify(pobj));
 
                 // Show prompt
                 this.openPrizePrompt(PrizeManager.PrizeTypes[this.foundPrizeType]);

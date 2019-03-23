@@ -9,7 +9,7 @@ define([
     PrizeManager.foundPrizeObject;
 
     PrizeManager.PrizeTypes = {
-        TenDollars: "$10",
+        TwentyfiveDollars: "$25",
         FiftyPercent: "50% Off",
         ViaPass: "ViaPass",
         TwentyDollars: "$20",
@@ -51,6 +51,10 @@ define([
         }
 
 
+        // If it requests a legacy $10 rewardID, apply the new $25 rewardID
+        if (this.foundPrizeIndex == 1) {
+            this.foundPrizeIndex = 7;
+        }
         // Make post request for the reward code
         $.post("/game/rewardcode", { rewardtype: this.foundPrizeIndex, referrercode: referrercode }, function(data) {
             // Check if we received a reward code back
@@ -68,7 +72,7 @@ define([
                     cd: data,
                     pt: this.foundPrizeType
                 }
-                // store.setItem('po', JSON.stringify(pobj));
+
                 localStorage.setItem('po', JSON.stringify(pobj));
 
                 // Show prompt
@@ -109,9 +113,9 @@ define([
 
         // Find prize description based on prize type
         switch (prizeType) {
-            case this.PrizeTypes.TenDollars:
-                d = "$10 off!";
-                n = "$10 Off";
+            case this.PrizeTypes.TwentyfiveDollars:
+                d = "$25 off!";
+                n = "$25 Off";
             break;
             case this.PrizeTypes.FiftyPercent:
                 d = "50% off five rides!";
@@ -151,7 +155,7 @@ define([
 
         // Find reward code based on table provided by Via
         switch (prizeType) {
-            case this.PrizeTypes.TenDollars:
+            case this.PrizeTypes.TwentyfiveDollars:
                 result = 1;
             break;
             case this.PrizeTypes.TwentyDollars:
@@ -179,7 +183,7 @@ define([
 
         // Find reward code based on table provided by Via
         switch (prizeType) {
-            case this.PrizeTypes.TenDollars:
+            case this.PrizeTypes.TwentyfiveDollars:
                 result = "#25B5EE";
             break;
             case this.PrizeTypes.TwentyDollars:
@@ -210,9 +214,7 @@ define([
         var intPrizeValue = Math.floor(Math.random() * 6);
         var prizeInts = Object.keys(PrizeManager.PrizeTypes);
         var fullPrizeValue = prizeInts[intPrizeValue];
-        console.log("INT: " + intPrizeValue);
-        console.log("VALUE: " + fullPrizeValue);
-
+        
         this.foundPrizeType = fullPrizeValue;
         this.foundPrizeObject = PrizeManager.PrizeTypes[this.foundPrizeType];
         this.foundPrizeIndex = this.findRewardTypeByPrizeType(this.foundPrizeObject);

@@ -212,11 +212,9 @@ canvas {
 }
 .prompt-container .text-code-link:hover {
     cursor: pointer;
-    /* filter: brightness(0.8); */
 }
 .prompt-container .text-code-link:active {
     transform: scale(0.95);
-    /* filter: brightness(0.75); */
 }
 .prompt-container .text-code-link .border-piece {
     position: absolute;

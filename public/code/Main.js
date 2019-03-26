@@ -122,7 +122,7 @@ require([
             return "iOS";
         }
       
-          return "unknown";
+        return "unknown";
     }
  
     // Start game

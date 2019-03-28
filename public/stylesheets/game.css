@@ -186,6 +186,10 @@ canvas {
     padding: 0px 3vw;
     margin: 0px;
 }
+.prompt-container .links-container {
+    position: relative;
+    z-index: 999;
+}
 .prompt-container .download-button {
     padding: 15px 20px;
     width: 80%;

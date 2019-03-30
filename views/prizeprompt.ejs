@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="stylesheets/fonts.css">
     <link rel="stylesheet" href="stylesheets/style.css">
     <link rel="stylesheet" href="stylesheets/prizeprompt.css">
+
     <script src="code/jquery-3.3.1.min.js"></script>
+    <script src="code/PrizePrompt.js"></script>
 </head>
 <body>
     <div class="prompt-container">
@@ -49,14 +51,14 @@
     </div>
 
     <script>
-        $(function() {
-            var w = window;
-            if (w.frameElement != null
-                    && w.frameElement.nodeName === "IFRAME"
-                    && w.parent.jQuery) {
-                w.parent.jQuery(w.parent.document).trigger('prizeFrameReady');
-            }
-        });
+        // $(function() {
+        //     var w = window;
+        //     if (w.frameElement != null
+        //             && w.frameElement.nodeName === "IFRAME"
+        //             && w.parent.jQuery) {
+        //         w.parent.jQuery(w.parent.document).trigger('prizeFrameReady');
+        //     }
+        // });
     </script>
 
 </body>

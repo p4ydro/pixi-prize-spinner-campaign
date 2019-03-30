@@ -19,6 +19,7 @@ define([
 
     PrizeManager.collectPrize = function(previousPlay) {
         Logger.log("PrizeManager", this.foundPrizeType);
+        let fc = $('iframe').contents();
         
         var referrercode = getQueryStringParams()["referrer_code"];
 
@@ -38,9 +39,9 @@ define([
             var previousPlayResults = JSON.parse(localStorage.getItem('po'));
             // Code
             if (previousPlayResults.cd) {
-                $(".code-container .reward-code-text").html(previousPlayResults.cd);
+                fc.find(".code-container .reward-code-text").html(previousPlayResults.cd);
             } else {
-                $(".code-container .reward-code-text").html("Error");
+                fc.find(".code-container .reward-code-text").html("Error");
             }
             // Prompt style
             if (previousPlayResults.pt) {
@@ -87,18 +88,23 @@ define([
         // Fill prompt with information
         var prizeInfo = this.getPrizeInfo(prizeType);
         var prizeColor = this.findColorByPrizeType(prizeType);
-        $('.prize-section').css("background-color", prizeColor);
-        $('.prize-section h1').html(prizeInfo.name);
-        $('.description-section .prize-text').html(prizeInfo.description);
+        // console.log(prizeColor);
+        let fc = $('iframe').contents();
+        fc.find('.prize-section').css("background-color", prizeColor);
+        fc.find('.prize-section').css("background-color", prizeColor);
+        fc.find('.prize-section h1').html(prizeInfo.name);
+        fc.find('.description-section .prize-text').html(prizeInfo.description);
 
         // Hide secondary text if unecessary
         if (prizeType !== this.PrizeTypes.TwoRides
         && prizeType !== this.PrizeTypes.FiftyPercent) {
             // Hide text
-            $('.prompt-container .description-section .secondary-prize-text').remove();
+            fc.find('.description-section .secondary-prize-text').remove();
             // Decrease padding on text box as it's now empty space
-            $('.prompt-container .description-section .prize-text-content').css('padding-bottom', '20px');
+            fc.find('.description-section .prize-text-content').css('padding-bottom', '20px');
         }
+
+        resizePrizeFrameWithContent($('iframe'));
 
         // Show darkener
         $('.darkener').addClass('shown');

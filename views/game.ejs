@@ -112,8 +112,8 @@
             prizeFrame.on('load', function() {
                 resizePrizeFrameWithContent($(this));
                 setTimeout(
-                resizePrizeFrameWithContent($(this))
-                , 3000);
+                    resizePrizeFrameWithContent($(this))
+                    , 3000);
             });
 
             // Resize prize frame on window resize
@@ -123,6 +123,7 @@
         });
 
         function resizePrizeFrameWithContent(passedPrizeFrame) {
+            console.log('resize');
             let prizeFrameDocument = document.querySelector('iframe').contentWindow;
             
             passedPrizeFrame.css({

@@ -146,10 +146,10 @@ canvas {
 }
 
 .prize-iframe-container {  
+    position: fixed;
     display: -webkit-box;  
     display: -ms-flexbox;  
     display: flex;
-    position: fixed;
     -webkit-box-align: center;
     -webkit-align-items: center;
         -ms-flex-align: center;
@@ -182,9 +182,16 @@ canvas {
     /* margin-top: 25%; */
     /* height: 100%; */
     z-index: 999;
+    /* border: 5px solid green; */
 }
 .prize-iframe-container.active .prize-iframe {
     pointer-events: all !important;
+}
+
+@supports (-webkit-appearance:none) {
+    .prize-iframe-container {
+        height: calc(100vh - 56px - 56px);
+    }
 }
 
 @media (orientation: portrait) {

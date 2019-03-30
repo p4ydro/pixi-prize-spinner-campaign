@@ -188,7 +188,7 @@ canvas {
     pointer-events: all !important;
 }
 
-@supports (-webkit-appearance:none) {
+@supports (-webkit-overflow-scrolling: touch) {
     .prize-iframe-container {
         height: calc(100vh - 56px - 56px);
     }

@@ -177,7 +177,7 @@ button:focus {
     overflow: hidden;
     width: 100%;
     margin-top: 1.5vh;
-    /* transition: 0.5s; */
+    transition: 0.5s;
     /* transition-timing-function: cubic-bezier(.4, -1, 0, 1.7); */
 }
 .prompt-container .text-phone-form.active {
@@ -259,6 +259,8 @@ button:focus {
     .prompt-container .description-section .prize-text-content {
         padding-bottom: 1vh;
         background-color: white;
+        padding-left: 1vw;
+        padding-right: 1vw;
     }
     .prompt-container .description-section .prize-text-content h1::after {
         content: "";

@@ -181,7 +181,7 @@ canvas {
     height: 100%;
     z-index: 999;
     /* background-color: white; */
-    /* border-radius: 15px; */
+    /* border-radius: 15px; */ 
     /* border: 5px solid green; */
 }
 .prize-iframe-container.active .prize-iframe {

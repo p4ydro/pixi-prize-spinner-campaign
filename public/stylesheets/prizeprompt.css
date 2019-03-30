@@ -207,8 +207,6 @@ button:focus {
     border-radius: 5px;
     color: #1fb7e9;
     background-color: transparent;
-    /* transition: 0.2s; */
-    /* transition-timing-function: cubic-bezier(.4, -0.5, 0, 2); */
 }
 .prompt-container .text-phone-form .submit-button:hover {
     cursor: pointer;

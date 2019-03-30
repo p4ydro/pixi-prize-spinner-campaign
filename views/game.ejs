@@ -52,84 +52,48 @@
 
         <div class="darkener"></div>
         
-        <iframe src="" frameborder="0" class="prize-iframe" div="prize-iframe">
-        </iframe>
-        <!-- <div class="prompt-container"> -->
-            <!-- <div class="prompt-transparency-wrapper"> -->
-                <!-- <div class="prize-section">
-                    <span class="prize-title-background"></span>
-                    <h1>50% Off</h1>
-                </div>
-                <div class="description-section">
-
-                    <div class="prize-text-content">
-                        <h1 class="prize-text">You've won 50% off your first 5 rides!</h1>
-                        <p class="secondary-prize-text">(max $10 off per ride)</p>
-                    </div>
-                    <h2>Use code:</h2>
-
-                    <div class="code-container">
-                        <h1 class="reward-code-text">XYZ123</h1>
-                    </div>
-
-                    <div class="links-container">
-                        <div class="button-container">
-                            <button class="download-button">Download and redeem</button>
-                        </div>
-
-                        <a class="text-code-link">
-                            Text me the code
-                            <span class="border-piece"></span>
-                        </a>
-                        <form class="text-phone-form" id="send-code-sms-form">
-                            <input type="tel" id="phone-number-input" name="phone" class="phone-input" placeholder="(123)123-1234"
-                            required>
-                            <button type="button" class="submit-button">Send</button>
-                        </form>
-                    </div>
-
-                </div> -->
-            <!-- </div> -->
-        <!-- </div> -->
+        <div class="prize-iframe-container">
+            <iframe src="" frameborder="0" class="prize-iframe" div="prize-iframe" allowtransparency="true">
+                <style>
+                    body
+                    {
+                        background:none transparent !important;
+                    }
+                </style>
+            </iframe>
+        </div>
     </div>
 
     <script>
-        // var prizeFrameIsReady = false;
-
-        // function setPrizeFrameReady() {
-        //     prizeFrameIsReady = true;
-        // }
-        // $(document).on('prizeFrameReady', setPrizeFrameReady);
-
         $(document).ready(function() {
+            // Prize frame
             var prizeFrame = $('iframe');
-
-            // Position the prize iFrame on load to match size of inner elements
+            // Initialize prize frame with source
             prizeFrame.attr("src", "/prizeprompt");
-            console.log(prizeFrame.attr("src"));
-            
-            // Resize frame on load
-            prizeFrame.on('load', function() {
-                resizePrizeFrameWithContent($(this));
-                setTimeout(
-                    resizePrizeFrameWithContent($(this))
-                    , 3000);
-            });
+        });
 
-            // Resize prize frame on window resize
-            $(window).on('resize', function() {
-                resizePrizeFrameWithContent($('iframe'));
-            });
+
+        $('iframe').on('load', function() {
+            console.log("RE")
+            resizePrizeFrameWithContent($(this));
+            // setTimeout(function() {
+            //     resizePrizeFrameWithContent($(this))
+            // }, 1000);
         });
 
         function resizePrizeFrameWithContent(passedPrizeFrame) {
-            console.log('resize');
             let prizeFrameDocument = document.querySelector('iframe').contentWindow;
             
             passedPrizeFrame.css({
                 height: prizeFrameDocument.$("body").outerHeight()
             });
         }
+        // var prizeFrameIsReady = false;
+
+        // function setPrizeFrameReady() {
+        //     prizeFrameIsReady = true;
+        // }
+        // $(document).on('prizeFrameReady', setPrizeFrameReady);
     </script>
 
     <script data-main="code/Main.js" src="requirejs/require.js"></script>

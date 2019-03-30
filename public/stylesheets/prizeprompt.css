@@ -1,5 +1,47 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
 body {
-    background-color: white;
+    background-color: transparent !important;
+    overflow-y: hidden;
+}
+#main {
+    overflow-y: hidden;
+}
+button {
+    font-family: 'AccordMedium', sans-serif;
+    padding: 10px 0px;
+    margin: 10px 0px;
+    border: none;
+    font-size: 22px;
+    border-radius: 5px;
+    background-color: #1877b7;
+    color: white;
+    transition: 0.2s;
+    transition-timing-function: cubic-bezier(.4, -0.5, 0, 2);
+}
+button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+button:active {
+    transform: scale(1.05);
+    filter: brightness(0.8);
+}
+button:focus {
+    outline: none;
+    border: none;
+}
+
+#main {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 15px;
+    background-color: transparent !important;
+    box-shadow: none;
 }
 .prompt-container {
     position: relative;
@@ -7,8 +49,8 @@ body {
     height: 100%;
     background-color: white;
     overflow: hidden;
-    transition: 0.5s;
-    transition-timing-function: cubic-bezier(.4, -0.5, 0, 1.2);
+    /* transition: 0.5s; */
+    /* transition-timing-function: cubic-bezier(.4, -0.5, 0, 1.2); */
     z-index: 999;
     padding-bottom: 40px;
 }
@@ -26,7 +68,7 @@ body {
     padding: 9vh 0px;
     overflow-y: hidden;
 }
-.prompt-container .prize-section h1 {
+.prompt-container .prize-header-title {
     position: relative;
     font-size: 8vh;
     z-index: 999;
@@ -42,19 +84,23 @@ body {
     background-size: contain;
 }
 .prompt-container .description-section {
-    color: #1fb7e9;
+    /* color: #1fb7e9; */
     text-align: center;
 }
 .prompt-container .description-section .prize-text-content {
     padding: 25px 3vh 40px;
 }
 .prompt-container .description-section .prize-text-content h1 {
-    color: #1fb7e9;
+    color: #1fb7e9 !important;
     padding-bottom: 15px;
     font-size: 45px;
 }
+.prompt-container .prize-text-content .secondary-prize-text {
+    color: #1fb7e9 !important;
+}
 .prompt-container .description-section h2 {
     padding-bottom: 20px;
+    color: #1fb7e9 !important;
 }
 .prompt-container .code-container {
     position: relative;
@@ -66,15 +112,19 @@ body {
     transform: translateX(-50%);
 }
 .prompt-container .code-container h1 {
+    color: #1fb7e9 !important;
     padding: 0px 3vw;
     margin: 0px;
 }
 .prompt-container .download-button {
+    position: relative;
     padding: 15px 20px;
     width: 80%;
     margin: 20px 0px;
+    z-index: 999;
 }
 .prompt-container .text-code-link {
+    color: #1fb7e9 !important;
     position: relative;
     font-size: 27px;
     margin: 20px 0px;
@@ -82,8 +132,7 @@ body {
     height: 0px;
     bottom: 0px;
     left: 0px;
-    transition: 0.2s;
-    transition-timing-function: cubic-bezier(.4, -0.5, 0, 1.2);
+    /* transition: 0.5s; */
 }
 .prompt-container .links-container {
     margin-top: 25px;
@@ -94,6 +143,9 @@ body {
 .prompt-container .text-code-link:active {
     transform: scale(0.95);
 }
+.prompt-container .text-code-link.disabled {
+    pointer-events: none;
+}
 .prompt-container .text-code-link .border-piece {
     position: absolute;
     left: 50%;
@@ -101,17 +153,31 @@ body {
     bottom: 0px;
     border-bottom: none;
     width: 0px;
-    transition: 0.4s;
-    transition-timing-function: cubic-bezier(.4, -0.5, 0, 1.2);
+    /* transition: 0.4s; */
+    /* transition-timing-function: cubic-bezier(.4, -0.5, 0, 1.2); */
 }
 .prompt-container .text-code-link:hover .border-piece {
     border-bottom: 2px solid #1fb7e9;
     width: 120%;
 }
+.prompt-container .text-code-link.disabled .border-piece {
+    width: 0px;
+}
 .prompt-container .text-phone-form {
-    display: none;
+    position: absolute;
+    /* display: none; */
+    height: 0px;
+    max-height: 0px;
+    overflow: hidden;
     width: 100%;
     margin-top: 1.5vh;
+    /* transition: 0.5s; */
+    /* transition-timing-function: cubic-bezier(.4, -1, 0, 1.7); */
+}
+.prompt-container .text-phone-form.active {
+    position: relative;
+    max-height: 100px;
+    height: auto;
 }
 .prompt-container .text-phone-form .phone-input {
     height: 40px;
@@ -131,12 +197,124 @@ body {
     border-radius: 5px;
     color: #1fb7e9;
     background-color: transparent;
-    transition: 0.2s;
-    transition-timing-function: cubic-bezier(.4, -0.5, 0, 2);
+    /* transition: 0.2s; */
+    /* transition-timing-function: cubic-bezier(.4, -0.5, 0, 2); */
 }
 .prompt-container .text-phone-form .submit-button:hover {
     cursor: pointer;
 }
 .prompt-container #send-code-sms-form label {
     display: none !important;
+}
+.prompt-container .prize-header-title {
+    font-family: 'AccordExtraBold', sans-serif;
+    /* font-family: 'AccordThin', sans-serif; */
+    /* font-size: 32px; */
+    color: white;
+    font-size: 5vh;
+    text-align: center;
+}
+.prompt-container .prize-text {
+    /* font-family: 'AccordMedium', sans-serif; */
+    font-family: 'AccordExtraBold', sans-serif;
+}
+.prompt-container .use-code-text {
+    font-family: 'AccordThin', sans-serif;
+    font-size: 27px;
+}
+.prompt-container .secondary-prize-text {
+  font-family: 'AccordThin', sans-serif;
+}
+.prompt-container .code-container .reward-code-text {
+  /* font-family: 'AccordThin', sans-serif; */
+  font-family: 'AccordExtraBold', sans-serif;
+}
+.prompt-container .download-button {
+  /* font-family: 'AccordThin', sans-serif; */
+  font-family: 'AccordMedium', sans-serif;
+}
+.prompt-container .text-code-link {
+    font-family: 'Accord', sans-serif;
+}
+.prompt-container .submit-button {
+    font-family: 'AccordThin', sans-serif;
+}
+
+@media (orientation: portrait) {
+    .prompt-container {
+        padding-bottom: 5vw;
+    }
+    .prompt-container .prize-section {
+        padding: 12vh 0px;
+    }
+    .prompt-container .prize-header-title {
+        font-size: 12vw;
+    }
+    .prompt-container .description-section .prize-text-content {
+        padding-bottom: 1vh;
+        background-color: white;
+    }
+    .prompt-container .description-section .prize-text-content h1::after {
+        content: "";
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+    }
+    .prompt-container .description-section .prize-text-content h1 {
+        padding-bottom: 7.5px;
+        z-index: 999;
+        color: #1fb7e9 !important;
+        /* background-blend-mode: multiply;
+        background-image: url("../images/Game/TextBackground.png");
+        background-size: cover;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-backface-visibility: hidden; */
+
+    }
+    .prompt-container .description-section .prize-text-content h1::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: white;
+        z-index: -2;
+    }
+    .prompt-container .description-section .secondary-prize-text {
+        font-size: 4.2vw;
+    }
+    .prompt-container .description-section h2 {
+        padding-top: 1.5vh;
+        padding-bottom: 1vh;
+        font-size: 11vw;
+    }
+    .prompt-container .code-container {
+        width: 80%;
+        left: 50%;
+        padding: 3vw 0px;
+    }
+    .prompt-container .code-container h1 {
+        padding: 0px 3vw;
+    }
+    .prompt-container .links-container {
+        margin-top: 0px;
+    }
+    .prompt-container .download-button {
+        padding: 3vw 5vw;
+        width: 80%;
+        margin: 5vw 0px;
+        font-size: 7vw;
+    }
+    .prompt-container .text-code-link {
+        font-size: 7.5vw;
+        margin: 2vw 0px;
+    }
+    .prompt-container .text-phone-form .submit-button {
+        font-size: 3.64vw;
+    }
 }

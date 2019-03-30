@@ -19,7 +19,7 @@ define([
 
     PrizeManager.collectPrize = function(previousPlay) {
         Logger.log("PrizeManager", this.foundPrizeType);
-        let fc = $('iframe').contents();
+        var fc = $('iframe').contents();
         
         var referrercode = getQueryStringParams()["referrer_code"];
 
@@ -39,9 +39,9 @@ define([
             var previousPlayResults = JSON.parse(localStorage.getItem('po'));
             // Code
             if (previousPlayResults.cd) {
-                fc.find(".code-container .reward-code-text").html(previousPlayResults.cd);
+                fc.find(".reward-code-text").text(previousPlayResults.cd);
             } else {
-                fc.find(".code-container .reward-code-text").html("Error");
+                fc.find(".reward-code-text").text("Error");
             }
             // Prompt style
             if (previousPlayResults.pt) {
@@ -61,7 +61,7 @@ define([
             // Check if we received a reward code back
             if (data) {
                 // If we received a reward code, show it in the prompt
-                $(".code-container .reward-code-text").html(data);
+                fc.find(".reward-code-text").html(data);
                 // Apply reward code to download link
                 downloadLink = $('.links-container .button-container a');
                 let newLink = downloadLink.attr("href") + data;
@@ -85,16 +85,24 @@ define([
     };
 
     PrizeManager.openPrizePrompt = function(prizeType) {
+        var fc = $('iframe').contents();
+        
         // Fill prompt with information
         var prizeInfo = this.getPrizeInfo(prizeType);
         var prizeColor = this.findColorByPrizeType(prizeType);
         // console.log(prizeColor);
-        let fc = $('iframe').contents();
         fc.find('.prize-section').css("background-color", prizeColor);
         fc.find('.prize-section').css("background-color", prizeColor);
-        fc.find('.prize-section h1').html(prizeInfo.name);
-        fc.find('.description-section .prize-text').html(prizeInfo.description);
+        fc.find('.prize-section h1').text(prizeInfo.name);
+        // setTimeout(function() {
+            fc.find('.prize-text').text(prizeInfo.description);
+        // }, 3000);
 
+        // setInterval(function() {
+        //     // fc.find('.prize-text').text(prizeInfo.description);
+        //     fc.find('.prize-text').css('color', 'color: #1fb7e9 !important');
+        // }, 100);
+        
         // Hide secondary text if unecessary
         if (prizeType !== this.PrizeTypes.TwoRides
         && prizeType !== this.PrizeTypes.FiftyPercent) {
@@ -104,12 +112,19 @@ define([
             fc.find('.description-section .prize-text-content').css('padding-bottom', '20px');
         }
 
+        // if (previousPlayResults.cd) {
+            // fc.find(".reward-code-text").html(previousPlayResults.cd);
+        // } else {
+            // fc.find(".reward-code-text").html("Error");
+        // }
+
         resizePrizeFrameWithContent($('iframe'));
 
         // Show darkener
         $('.darkener').addClass('shown');
         // Show prompt
-        $('.prize-iframe').addClass('active');
+        $('.prize-iframe-container').addClass('active');
+        $('canvas').css('display', 'none');
     };
 
     PrizeManager.getPrizeInfo = function(prizeType) {
@@ -240,10 +255,12 @@ define([
             intPrizeValue = 0;
         }
 
+        intPrizeValue = 3;
+
         this.foundPrizeType = prizeInts[intPrizeValue];
         this.foundPrizeObject = PrizeManager.PrizeTypes[this.foundPrizeType];
         this.foundPrizeIndex = this.findRewardTypeByPrizeType(this.foundPrizeObject);
-
+        
         return intPrizeValue;
     };
 

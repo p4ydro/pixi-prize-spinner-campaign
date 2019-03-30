@@ -1,0 +1,148 @@
+.prompt-container {
+    /* pointer-events: none; */
+    /* opacity: 0; */
+    /* position: absolute; */
+    position: relative;
+    /* width: 90vw; */
+    width: 100%;
+    height: 100%;
+    /* max-width: calc(100vh / 2); */
+    /* left: 50%;
+    top: 50%; */
+    /* transform: translate(-50%, -50%); */
+    background-color: white;
+    /* padding-bottom: 40px; */
+    /* border-radius: 15px; */
+    overflow: hidden;
+    transition: 0.5s;
+    transition-timing-function: cubic-bezier(.4, -0.5, 0, 1.2);
+    z-index: 999;
+    padding-bottom: 40px;
+}
+.prompt-container.active {
+    pointer-events: all;
+    opacity: 1;
+}
+.prompt-container .prize-section {
+    width: 120%;
+    top: -2px;
+    left: -10%;
+    position: relative;
+    font-family: "AccordBold", sans-serif;
+    background-color: #f28f32;
+    padding: 9vh 0px;
+    overflow-y: hidden;
+}
+.prompt-container .prize-section h1 {
+    position: relative;
+    font-size: 8vh;
+    z-index: 999;
+}
+.prompt-container .prize-title-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 97%;
+    height: 97%;
+    background-image: url("../images/Game/Stars.png");
+    background-size: contain;
+}
+.prompt-container .description-section {
+    color: #1fb7e9;
+    text-align: center;
+}
+.prompt-container .description-section .prize-text-content {
+    padding: 25px 3vh 40px;
+}
+.prompt-container .description-section .prize-text-content h1 {
+    color: #1fb7e9;
+    padding-bottom: 15px;
+    font-size: 45px;
+}
+.prompt-container .description-section h2 {
+    padding-bottom: 20px;
+}
+.prompt-container .code-container {
+    position: relative;
+    background-color: #b6ecff;
+    border-radius: 5px;
+    width: 70%;
+    left: 50%;
+    padding: 15px 0px;
+    transform: translateX(-50%);
+}
+.prompt-container .code-container h1 {
+    padding: 0px 3vw;
+    margin: 0px;
+}
+.prompt-container .download-button {
+    padding: 15px 20px;
+    width: 80%;
+    margin: 20px 0px;
+}
+.prompt-container .text-code-link {
+    font-size: 27px;
+    margin: 20px 0px;
+    width: 0px;
+    height: 0px;
+    bottom: 0px;
+    left: 0px;
+    transition: 0.2s;
+    transition-timing-function: cubic-bezier(.4, -0.5, 0, 1.2);
+}
+.prompt-container .links-container {
+    margin-top: 25px;
+}
+.prompt-container .text-code-link:hover {
+    cursor: pointer;
+}
+.prompt-container .text-code-link:active {
+    transform: scale(0.95);
+}
+.prompt-container .text-code-link .border-piece {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0px;
+    border-bottom: none;
+    width: 0px;
+    /* transition: 0.4s; */
+    transition-timing-function: cubic-bezier(.4, -0.5, 0, 1.2);
+}
+.prompt-container .text-code-link:hover .border-piece {
+    border-bottom: 2px solid #1fb7e9;
+    width: 100%;
+}
+.prompt-container .text-phone-form {
+    display: none;
+    width: 100%;
+    margin-top: 1.5vh;
+}
+.prompt-container .text-phone-form .phone-input {
+    height: 40px;
+    width: 60%;
+    font-size: 22px;
+    padding-left: 10px;
+    border-radius: 15px;
+    border: 3px solid #f28f32;
+}
+.prompt-container .text-phone-form .submit-button {
+    font-family: 'AccordMedium', sans-serif;
+    margin-left: 0px;
+    width: 15%;
+    height: 40px;
+    border: none;
+    font-size: 32px;
+    border-radius: 5px;
+    color: #1fb7e9;
+    background-color: transparent;
+    transition: 0.2s;
+    transition-timing-function: cubic-bezier(.4, -0.5, 0, 2);
+}
+.prompt-container .text-phone-form .submit-button:hover {
+    cursor: pointer;
+}
+.prompt-container #send-code-sms-form label {
+    display: none !important;
+}

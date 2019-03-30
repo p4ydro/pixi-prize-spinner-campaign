@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Via Spinner Prize Prompt</title>
+
+    <link rel="stylesheet" href="stylesheets/fonts.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/prizeprompt.css">
+    <script src="code/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <div class="prompt-container">
+        <div class="prize-section">
+            <span class="prize-title-background"></span>
+            <h1>50% Off</h1>
+        </div>
+        <div class="description-section">
+
+            <div class="prize-text-content">
+                <h1 class="prize-text">You've won 50% off your first 5 rides!</h1>
+                <p class="secondary-prize-text">(max $10 off per ride)</p>
+            </div>
+            <h2>Use code:</h2>
+
+            <div class="code-container">
+                <h1 class="reward-code-text">XYZ123</h1>
+            </div>
+
+            <div class="links-container">
+                <div class="button-container">
+                    <button class="download-button">Download and redeem</button>
+                </div>
+
+                <a class="text-code-link">
+                    Text me the code
+                    <span class="border-piece"></span>
+                </a>
+                <form class="text-phone-form" id="send-code-sms-form">
+                    <input type="tel" id="phone-number-input" name="phone" class="phone-input" placeholder="(123)123-1234"
+                    required>
+                    <button type="button" class="submit-button">Send</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        $(function() {
+            var w = window;
+            if (w.frameElement != null
+                    && w.frameElement.nodeName === "IFRAME"
+                    && w.parent.jQuery) {
+                w.parent.jQuery(w.parent.document).trigger('prizeFrameReady');
+            }
+        });
+    </script>
+
+</body>
+</html>

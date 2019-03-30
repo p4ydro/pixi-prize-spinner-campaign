@@ -52,9 +52,11 @@
 
         <div class="darkener"></div>
         
-        <div class="prompt-container">
-            <div class="prompt-transparency-wrapper">
-                <div class="prize-section">
+        <iframe src="" frameborder="0" class="prize-iframe" div="prize-iframe">
+        </iframe>
+        <!-- <div class="prompt-container"> -->
+            <!-- <div class="prompt-transparency-wrapper"> -->
+                <!-- <div class="prize-section">
                     <span class="prize-title-background"></span>
                     <h1>50% Off</h1>
                 </div>
@@ -86,10 +88,48 @@
                         </form>
                     </div>
 
-                </div>
-            </div>
-        </div>
+                </div> -->
+            <!-- </div> -->
+        <!-- </div> -->
     </div>
+
+    <script>
+        // var prizeFrameIsReady = false;
+
+        // function setPrizeFrameReady() {
+        //     prizeFrameIsReady = true;
+        // }
+        // $(document).on('prizeFrameReady', setPrizeFrameReady);
+
+        $(document).ready(function() {
+            var prizeFrame = $('iframe');
+
+            // Position the prize iFrame on load to match size of inner elements
+            prizeFrame.attr("src", "/prizeprompt");
+            console.log(prizeFrame.attr("src"));
+            
+            // Resize frame on load
+            prizeFrame.on('load', function() {
+                resizePrizeFrameWithContent($(this));
+                setTimeout(
+                resizePrizeFrameWithContent($(this))
+                , 3000);
+            });
+
+            // Resize prize frame on window resize
+            $(window).on('resize', function() {
+                resizePrizeFrameWithContent($('iframe'));
+            });
+        });
+
+        function resizePrizeFrameWithContent(passedPrizeFrame) {
+            let prizeFrameDocument = document.querySelector('iframe').contentWindow;
+            
+            passedPrizeFrame.css({
+                height: prizeFrameDocument.$("body").outerHeight()
+            });
+        }
+    </script>
 
     <script data-main="code/Main.js" src="requirejs/require.js"></script>
 

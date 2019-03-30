@@ -103,7 +103,7 @@ define([
         // Show darkener
         $('.darkener').addClass('shown');
         // Show prompt
-        $('.prompt-container').addClass('active');
+        $('.prize-iframe').addClass('active');
     };
 
     PrizeManager.getPrizeInfo = function(prizeType) {

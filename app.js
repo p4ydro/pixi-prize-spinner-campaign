@@ -12,6 +12,7 @@ var inviteFriendsRouter = require('./routes/invitefriends');
 var spinIntroRouter = require('./routes/spinintro');
 var skippedGameRouter = require('./routes/skippedgame');
 var thankYouRouter = require('./routes/thankyou');
+var prizePromptRouter = require('./routes/prizeprompt');
 
 var smsAccountSid = 'AC036291fad1b74c33ed3a4784655532fa';
 const smsAuthToken = '196b81328e237eea77dc596449d90825';
@@ -37,6 +38,7 @@ app.use('/invitefriends', inviteFriendsRouter);
 app.use('/spinintro', spinIntroRouter);
 app.use('/skippedgame', skippedGameRouter)
 app.use('/thankyou', thankYouRouter);
+app.use('/prizeprompt', prizePromptRouter);
 
 // Application usage setup
 app.use(express.static(path.join(__dirname, 'public')));

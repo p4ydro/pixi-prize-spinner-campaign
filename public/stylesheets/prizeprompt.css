@@ -56,7 +56,6 @@ button:focus {
     /* transition-timing-function: cubic-bezier(.4, -0.5, 0, 1.2); */
     z-index: 999;
     padding-bottom: 40px;
-    /* border-radius: 15px; */
 }
 .prompt-container.active {
     pointer-events: all;
@@ -157,8 +156,8 @@ button:focus {
     bottom: 0px;
     border-bottom: none;
     width: 0px;
-    transition: 0.4s;
-    transition-timing-function: cubic-bezier(.4, -0.5, 0, 1.2);
+    /* transition: 0.4s; */
+    /* transition-timing-function: cubic-bezier(.4, -0.5, 0, 1.2); */
 }
 .prompt-container .text-code-link:hover .border-piece {
     border-bottom: 2px solid #1fb7e9;
@@ -175,7 +174,7 @@ button:focus {
     overflow: hidden;
     width: 100%;
     margin-top: 1.5vh;
-    transition: 0.5s;
+    /* transition: 0.5s; */
     /* transition-timing-function: cubic-bezier(.4, -1, 0, 1.7); */
 }
 .prompt-container .text-phone-form.active {

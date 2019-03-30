@@ -46,12 +46,6 @@ require([
         $(window).on('resize', function() {
             resizePrizeFrameWithContent($('iframe'));
         });
-
-        $(window).on('textFormOpened', function() {
-            setTimeout(function() {
-                resizePrizeFrameWithContent($('iframe'));
-            }, 300)
-        });
     };
 
     function getMobileOperatingSystem() {

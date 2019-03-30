@@ -76,9 +76,9 @@
         $('iframe').on('load', function() {
             console.log("RE")
             resizePrizeFrameWithContent($(this));
-            // setTimeout(function() {
-            //     resizePrizeFrameWithContent($(this))
-            // }, 1000);
+            setTimeout(function() {
+                resizePrizeFrameWithContent($(this))
+            }, 3000);
         });
 
         function resizePrizeFrameWithContent(passedPrizeFrame) {

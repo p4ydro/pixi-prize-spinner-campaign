@@ -21,7 +21,8 @@ body {
     max-width: calc(100vh / 1.6);
     top: 0px;
     left: 50%;
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
     z-index: -99;
     overflow-x: hidden;
 }
@@ -41,7 +42,8 @@ body {
     position: absolute;
     top: -2%;
     left: 50%;
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
     width: 105%;
 }
 
@@ -50,7 +52,8 @@ canvas {
     padding: 0px;
     margin: 0px;
     top: 0px;
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
     /* background-color: transparent; */
     /* background: none; */
     /* z-index: 0; */
@@ -63,7 +66,8 @@ canvas {
     max-width: calc(100vh / 1.6);
     top: 0px;
     left: 50%;
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
     z-index: 5;
 }
 .game-overlay .button-section {
@@ -76,6 +80,7 @@ canvas {
 .game-overlay .spin-button {
     width: 50%;
     opacity: 1;
+    -webkit-transition: 0.2s;
     transition: 0.2s;
     font-size: 27px;
     margin-bottom: 40px;
@@ -89,7 +94,9 @@ canvas {
 .game-overlay .spin-text h2 {
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    -webkit-transition: 0.5s;
     transition: 0.5s;
 }
 .game-overlay .spin-text .spinning-text {
@@ -105,8 +112,10 @@ canvas {
     height: 100vh;
     opacity: 0;
     background-color: rgba(0, 0, 0, 0.5);
+    -webkit-transition: 0.3s;
     transition: 0.3s;
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
 }
 .darkener.shown {
     visibility: visible;
@@ -128,38 +137,49 @@ canvas {
     left: 50%;
     right: 50%;
     width: 100%;
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
     text-align: center;
 }
 .loading-overlay .loading-icon {
     color: white;
 }
 
-.prize-iframe-container {
-    /* position: relative; */
+.prize-iframe-container {  
+    display: -webkit-box;  
+    display: -ms-flexbox;  
+    display: flex;
+    position: fixed;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center; /* horizontal */
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; /* vertical */
     pointer-events: none;
     opacity: 0;
     background-color: transparent;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     z-index: 999;
+    -webkit-transition: 0.3s;
     transition: 0.3s;
     /* border: 5px solid red; */
 }
 .prize-iframe-container.active {
     pointer-events: all !important;
     background-color: transparent;
-    /* margin-top: 0px; */
     opacity: 1;
 }
 .prize-iframe {
-    position: relative;
+    /* position: relative; */
     pointer-events: none;
     background-color: transparent;
     /* width: 80%; */
     width: 90vw;
     max-width: calc(100vh / 2);
-    margin-top: 25%;
+    /* margin-top: 25%; */
     /* height: 100%; */
     z-index: 999;
 }
@@ -179,11 +199,24 @@ canvas {
     }
 }
 
-@keyframes fliz-spin {
+@-webkit-keyframes fliz-spin {
     from {
-        transform: rotation(0deg);
+        -webkit-transform: rotation(0deg);
+                transform: rotation(0deg);
     }
     to {
-        transform: rotation(360deg);
+        -webkit-transform: rotation(360deg);
+                transform: rotation(360deg);
+    }
+}
+
+@keyframes fliz-spin {
+    from {
+        -webkit-transform: rotation(0deg);
+                transform: rotation(0deg);
+    }
+    to {
+        -webkit-transform: rotation(360deg);
+                transform: rotation(360deg);
     }
 }

@@ -17,14 +17,18 @@ body {
 
 #main {
   background-color: #46d5fa;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#1fb7e9), to(#46d5fa));
   background-image: linear-gradient(#1fb7e9, #46d5fa);
   position: relative;
   height: 100vh;
   width: 100vw;
   max-width: calc(100vh / 1.6);
   left: 50%;
-  transform: translateX(-50%);
-  box-shadow: 4px 0px 0px #1877b7, -4px 0px 0px #1877b7,
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-box-shadow: 4px 0px 0px #1877b7, -4px 0px 0px #1877b7,
+              0px 0px 200px rgba(0, 0, 0, 0.4);
+          box-shadow: 4px 0px 0px #1877b7, -4px 0px 0px #1877b7,
               0px 0px 200px rgba(0, 0, 0, 0.4);
 }
 
@@ -53,16 +57,21 @@ button {
   border-radius: 5px;
   background-color: #1877b7;
   color: white;
+  -webkit-transition: 0.2s;
   transition: 0.2s;
-  transition-timing-function: cubic-bezier(.4, -0.5, 0, 2);
+  -webkit-transition-timing-function: cubic-bezier(.4, -0.5, 0, 2);
+          transition-timing-function: cubic-bezier(.4, -0.5, 0, 2);
 }
 button:hover {
   cursor: pointer;
-  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 button:active {
-  transform: scale(1.05);
-  filter: brightness(0.8);
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  -webkit-filter: brightness(0.8);
+          filter: brightness(0.8);
 }
 button:focus {
   outline: none;
@@ -73,7 +82,8 @@ button:focus {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
 }
 
 @media (orientation: portrait) {

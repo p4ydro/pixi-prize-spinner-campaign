@@ -7,6 +7,9 @@ body {
     overflow-y: hidden;
 }
 #main {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
     overflow-y: hidden;
 }
 button {
@@ -223,7 +226,7 @@ button:focus {
     font-size: 27px;
 }
 .prompt-container .secondary-prize-text {
-  font-family: 'AccordThin', sans-serif;
+    font-family: 'AccordReg', sans-serif;
 }
 .prompt-container .code-container .reward-code-text {
   /* font-family: 'AccordThin', sans-serif; */
@@ -266,13 +269,6 @@ button:focus {
         padding-bottom: 7.5px;
         z-index: 999;
         color: #1fb7e9 !important;
-        /* background-blend-mode: multiply;
-        background-image: url("../images/Game/TextBackground.png");
-        background-size: cover;
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        -webkit-backface-visibility: hidden; */
 
     }
     .prompt-container .description-section .prize-text-content h1::before {

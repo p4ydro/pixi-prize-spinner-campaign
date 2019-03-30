@@ -31,6 +31,9 @@ require([
                 // "left": (clientWidth / 2),
                 // "transform": "translate(-50%, -50%)"
             // });
+            // $('.prize-iframe').css({
+            //     "margin-top": "12%"
+            // })
         }
 
 

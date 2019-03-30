@@ -255,7 +255,7 @@ define([
             intPrizeValue = 0;
         }
 
-        intPrizeValue = 3;
+        // intPrizeValue = 3;
 
         this.foundPrizeType = prizeInts[intPrizeValue];
         this.foundPrizeObject = PrizeManager.PrizeTypes[this.foundPrizeType];

@@ -82,8 +82,8 @@ function sendSMS() {
     });
 
     // Remove text code link & input
-    $('.text-code-link').fadeOut(300);
-    $('.prompt-container .text-phone-form').fadeOut(300);
+    // $('.text-code-link').fadeOut(300);
+    // $('.prompt-container .text-phone-form').fadeOut(300);
 }
 
 function getMobileOperatingSystem() {

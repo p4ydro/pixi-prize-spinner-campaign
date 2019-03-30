@@ -174,12 +174,14 @@ canvas {
     opacity: 1;
 }
 .prize-iframe {
+    position: relative;
     pointer-events: none;
     background-color: transparent;
     width: 90vw;
     max-width: calc(100vh / 2);
     height: 100%;
     z-index: 999;
+    border-radius: 15px;
     /* border: 5px solid green; */
 }
 .prize-iframe-container.active .prize-iframe {

@@ -12,6 +12,7 @@ body {
   text-align: center;
   padding: 0px;
   margin: 0px;
+  height: auto;
   overflow-y: hidden;
 }
 

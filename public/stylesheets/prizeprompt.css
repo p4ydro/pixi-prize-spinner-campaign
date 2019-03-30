@@ -73,6 +73,11 @@ button:focus {
     background-color: #f28f32;
     padding: 9vh 0px;
     overflow-y: hidden;
+    outline: 20px solid red;
+    outline-offset: -20px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 .prompt-container .prize-header-title {
     position: relative;
@@ -90,7 +95,6 @@ button:focus {
     background-size: contain;
 }
 .prompt-container .description-section {
-    /* color: #1fb7e9; */
     text-align: center;
 }
 .prompt-container .description-section .prize-text-content {

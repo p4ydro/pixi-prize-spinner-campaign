@@ -49,7 +49,6 @@ require([
 
         $(window).on('textFormOpened', function() {
             setTimeout(function() {
-                console.log("Text form opent");
                 resizePrizeFrameWithContent($('iframe'));
             }, 300)
         });

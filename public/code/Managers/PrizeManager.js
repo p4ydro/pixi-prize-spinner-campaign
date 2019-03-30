@@ -91,8 +91,11 @@ define([
         var prizeInfo = this.getPrizeInfo(prizeType);
         var prizeColor = this.findColorByPrizeType(prizeType);
         // console.log(prizeColor);
-        fc.find('.prize-section').css("background-color", prizeColor);
-        fc.find('.prize-section').css("background-color", prizeColor);
+        fc.find('.prompt-container').css('background-color', prizeColor);
+        fc.find('.prize-section').css({
+            "background-color": prizeColor,
+            "outline-color": prizeColor
+        });
         fc.find('.prize-section h1').text(prizeInfo.name);
         // setTimeout(function() {
             fc.find('.prize-text').text(prizeInfo.description);

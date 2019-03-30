@@ -73,8 +73,8 @@ button:focus {
     background-color: #f28f32;
     padding: 9vh 0px;
     overflow-y: hidden;
-    outline: 20px solid red;
-    outline-offset: -20px;
+    outline: 100px solid red;
+    outline-offset: -100px;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;

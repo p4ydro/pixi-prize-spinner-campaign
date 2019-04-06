@@ -261,8 +261,8 @@ button:focus {
     .prompt-container .description-section .prize-text-content {
         padding-bottom: 1vh;
         background-color: white;
-        padding-left: 1vw;
-        padding-right: 1vw;
+        padding-right: 6vw;
+        padding-left: 6vw;
     }
     .prompt-container .description-section .prize-text-content h1::after {
         content: "";

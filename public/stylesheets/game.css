@@ -122,8 +122,6 @@ canvas {
     opacity: 0.8;
 }
 
-<<<<<<< HEAD
-=======
 .prompt-container {
     pointer-events: none;
     opacity: 0;
@@ -273,7 +271,6 @@ canvas {
     display: none !important;
 }
 
->>>>>>> 9033844bf676baeb406a0ad4a4ddc6197dfe7205
 .loading-overlay {
     position: fixed;
     width: 100vw;
